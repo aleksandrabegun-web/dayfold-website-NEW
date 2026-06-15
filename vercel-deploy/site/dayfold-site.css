@@ -477,6 +477,12 @@ body.isReorderingToday, body.isReorderingToday * { cursor: grabbing !important; 
   .navlinks { gap: 14px; }
   .navlinks a:not(.navCta) { display: none; }
   h1 { font-size: clamp(44px, 13vw, 66px); }
+  .lead { font-size: 17px; line-height: 1.54; }
+  .sectionLead { font-size: 16px; line-height: 1.58; }
+  .spaceStep p { font-size: 16px; line-height: 1.54; }
+  .roleProofCard p.roleWhy { font-size: 15px; line-height: 1.58; }
+  .legal .lede { font-size: 16px; line-height: 1.58; }
+  .legal p, .legal li { font-size: 15px; line-height: 1.62; }
   .hero { padding-top: 44px; }
   .heroStack { min-height: 500px; height: 500px; }
   .phoneShot { padding: 7px; border-radius: 34px; }
