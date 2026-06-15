@@ -156,13 +156,14 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .routineCopy p.sectionLead + p.sectionLead { margin-top: 14px; }
 .routineDemo { background: none; border: none; border-radius: 0; padding: 0; box-shadow: none; }
 .routineDayHead { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 0 auto 14px; width: min(340px, 100%); padding: 0 4px; }
-.routineDayHead > span { font-family: var(--font-mono); font-size: 13px; letter-spacing: .03em; color: var(--muted); }
-.routineSwitch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; background: none; border: none; padding: 0; font: inherit; color: var(--muted); }
-.rsLabel { font-size: 13px; font-weight: 600; }
-.rsTrack { width: 40px; height: 24px; border-radius: 999px; background: var(--paper-100); position: relative; transition: background-color .22s ease; }
-.rsKnob { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(42,36,32,.25); transition: transform .22s cubic-bezier(.22,.61,.21,1); }
-.routineSwitch.on .rsTrack { background: var(--camel); }
-.routineSwitch.on .rsKnob { transform: translateX(16px); }
+.routineTitle { display: inline-flex; align-items: baseline; gap: .35em; min-width: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.3; letter-spacing: .03em; color: var(--muted); }
+.routineTitleCall { white-space: nowrap; }
+.routineSwitch { display: inline-flex; align-items: center; gap: 10px; flex: none; cursor: pointer; background: none; border: none; padding: 0; font: inherit; color: var(--muted); }
+.rsLabel { font-size: 13px; line-height: 1.16; font-weight: 700; text-align: right; }
+.rsTrack { width: 46px; height: 28px; flex: 0 0 46px; border-radius: 999px; background: var(--paper-100); position: relative; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--paper-200) 72%, var(--camel) 28%); transition: background-color .22s ease, box-shadow .22s ease; }
+.rsKnob { position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(42,36,32,.18); transform: translateX(0); transition: transform .22s cubic-bezier(.22,.61,.21,1); }
+.routineSwitch.on .rsTrack { background: var(--camel); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--camel) 88%, #fff 12%); }
+.routineSwitch.on .rsKnob { transform: translateX(18px); }
 .routineDay { display: flex; flex-direction: column; }
 .routinePhone { position: relative; width: min(340px, 100%); margin: 0 auto; overflow: hidden; border-radius: 16px; border: 1px solid var(--border-subtle); box-shadow: var(--soft-shadow); background: #fff; padding: 7px 7px 14px; }
 .rViewport { position: relative; aspect-ratio: 1206 / 1350; overflow: hidden; border-radius: 10px; }
@@ -171,6 +172,12 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .routinePhone.hideRoutines .rOff { opacity: 1; }
 .routinePhone.hideRoutines .rOn { opacity: 0; }
 @media (max-width: 920px) { .routineBand { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .routineDayHead { width: min(340px, calc(100vw - 76px)); align-items: center; gap: 12px; padding: 0 2px; }
+  .routineTitle { flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.25; }
+  .routineSwitch { gap: 9px; }
+  .rsLabel { max-width: 74px; }
+}
 @media (prefers-reduced-motion: reduce) { .rShot { transition: opacity .2s ease; } }
 
 /* ---------- showcase: sticky scrollytelling ---------- */
