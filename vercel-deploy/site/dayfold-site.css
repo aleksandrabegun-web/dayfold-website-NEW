@@ -266,15 +266,14 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
   mask-size: contain;
 }
 .scribbleTap .scribbleLabel { width: clamp(86px, 9vw, 134px); aspect-ratio: 437 / 148; -webkit-mask-image: url('/public/assets/scribbles/label-tap-me.png'); mask-image: url('/public/assets/scribbles/label-tap-me.png'); }
-.scribbleDrag .scribbleLabel { width: auto; min-width: clamp(92px, 9.4vw, 142px); aspect-ratio: auto; background: transparent; -webkit-mask-image: none; mask-image: none; font-family: "Snell Roundhand", "Savoye LET", "Brush Script MT", cursive; font-size: clamp(33px, 4.4vw, 54px); line-height: .95; font-weight: 400; letter-spacing: .01em; white-space: nowrap; }
-.scribbleDrag .scribbleLabel::before { content: "Drag me"; }
+.scribbleDrag .scribbleLabel { width: clamp(126px, 10.8vw, 178px); aspect-ratio: 337 / 100; -webkit-mask-image: url('/public/assets/scribbles/label-drag-me.png'); mask-image: url('/public/assets/scribbles/label-drag-me.png'); }
 .scribbleTry .scribbleLabel { width: clamp(92px, 9.4vw, 138px); aspect-ratio: 430 / 166; -webkit-mask-image: url('/public/assets/scribbles/label-try-me.png'); mask-image: url('/public/assets/scribbles/label-try-me.png'); }
 .scribbleLoopUp .scribbleMark { width: clamp(38px, 4.4vw, 58px); aspect-ratio: 218 / 365; -webkit-mask-image: url('/public/assets/scribbles/arrow-loop-up.png'); mask-image: url('/public/assets/scribbles/arrow-loop-up.png'); transform: translateY(-8px); }
 .scribbleLoopDown .scribbleMark { width: clamp(36px, 4vw, 54px); aspect-ratio: 158 / 269; -webkit-mask-image: url('/public/assets/scribbles/arrow-loop-down.png'); mask-image: url('/public/assets/scribbles/arrow-loop-down.png'); transform: translateY(-4px); }
 .scribbleArch .scribbleMark { width: clamp(56px, 6.6vw, 88px); aspect-ratio: 314 / 217; -webkit-mask-image: url('/public/assets/scribbles/arrow-arch-down.png'); mask-image: url('/public/assets/scribbles/arrow-arch-down.png'); transform: translateY(-10px); }
-.scribbleGripArrow { flex-direction: row-reverse; align-items: flex-start; }
-.scribbleGripArrow .scribbleMark { width: clamp(28px, 3.2vw, 42px); aspect-ratio: 101 / 319; -webkit-mask-image: url('/public/assets/scribbles/arrow-left-down.png'); mask-image: url('/public/assets/scribbles/arrow-left-down.png'); transform: translateY(4px) rotate(2deg); }
-.scribbleGripArrow .scribbleLabel { transform: translateY(7px) rotate(1deg); }
+.scribbleGripArrow { display: block; width: clamp(180px, 16vw, 244px); height: clamp(104px, 9.2vw, 140px); }
+.scribbleGripArrow .scribbleLabel { position: absolute; left: 82px; top: 0; transform: rotate(-1deg); }
+.scribbleGripArrow .scribbleMark { position: absolute; left: 0; top: -20px; width: clamp(20px, 1.8vw, 27px); aspect-ratio: 71 / 272; -webkit-mask-image: url('/public/assets/scribbles/arrow-drag-grip.png'); mask-image: url('/public/assets/scribbles/arrow-drag-grip.png'); transform: rotate(1deg); }
 .rv.in .scribbleHint, .scribbleHint.rv.in { animation: scribbleNudge .75s cubic-bezier(.22,.61,.21,1) .35s both; }
 @keyframes scribbleNudge { 0% { transform: translateY(5px) rotate(-3deg); opacity: .25; } 58% { transform: translateY(-1px) rotate(-4deg); opacity: .9; } 100% { transform: rotate(-3deg); opacity: .88; } }
 
@@ -512,7 +511,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .todayMods, .todayMods * { -webkit-tap-highlight-color: transparent; }
 .todayMods > .h { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 16px; padding-right: 0; text-align: right; }
 .todayMods > .scribbleHint { position: absolute; top: -18px; left: 18px; z-index: 2; transform: rotate(-8deg) scale(.58); transform-origin: top left; }
-.todayMods > .scribbleGripArrow { top: 34px; left: 32px; transform: rotate(-6deg) scale(.64); }
+.todayMods > .scribbleGripArrow { top: 44px; left: 44px; transform: rotate(-1deg); }
 .modRow { display: flex; align-items: center; gap: 13px; padding: 13px 14px; border-radius: 16px; background: var(--surface-sunken); transition: opacity .25s ease, background-color .4s ease, box-shadow .2s ease, transform .2s ease; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: manipulation; }
 .modRow + .modRow { margin-top: 8px; }
 .modRow.off { opacity: .45; }
@@ -655,7 +654,7 @@ body.isReorderingToday, body.isReorderingToday * { cursor: grabbing !important; 
   .freeGap { margin-left: 88px; }
   .todayMods > .h { padding-right: 0; margin-bottom: 16px; text-align: right; }
   .todayMods > .scribbleHint { position: absolute; top: -18px; left: 18px; margin: 0; transform: rotate(-8deg) scale(.58); }
-  .todayMods > .scribbleGripArrow { top: 34px; left: 32px; transform: rotate(-6deg) scale(.64); }
+  .todayMods > .scribbleGripArrow { top: 44px; left: 44px; transform: rotate(-1deg); }
   .faqCta { flex-direction: column; align-items: flex-start; }
   .footer { flex-direction: column; }
 }
