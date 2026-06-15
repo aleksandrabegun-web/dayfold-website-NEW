@@ -174,11 +174,51 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .routinePhone.hideRoutines .rOn { opacity: 0; }
 @media (max-width: 920px) { .routineBand { grid-template-columns: 1fr; } }
 @media (max-width: 560px) {
-  .routineDayHead { width: 100%; align-items: center; gap: 8px; padding: 0 2px; flex-wrap: wrap; }
-  .routineTitle { flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.25; }
-  .routineHint { position: static; order: 3; flex-basis: 100%; margin: -4px 0 -2px auto; transform: rotate(-4deg); }
-  .routineSwitch { gap: 9px; margin-left: auto; }
+  .routineDayHead {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title switch"
+      "hint hint";
+    align-items: end;
+    row-gap: 7px;
+    column-gap: 12px;
+    width: 100%;
+    padding: 0 2px;
+    margin-bottom: 12px;
+  }
+  .routineTitle {
+    grid-area: title;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    line-height: 1.25;
+  }
+  .routineSwitch { grid-area: switch; gap: 9px; margin-left: auto; align-self: end; }
   .rsLabel { max-width: 74px; }
+  .routineHint {
+    grid-area: hint;
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(88px, 33%);
+    align-items: start;
+    gap: 8px;
+    width: 100%;
+    margin: -2px 0 -2px;
+    transform: none;
+  }
+  .routineHint .scribbleLabel {
+    justify-self: start;
+    width: clamp(92px, 30vw, 122px);
+    background: color-mix(in srgb, var(--camel-deep) 76%, var(--ink-subtle));
+    transform: rotate(-5deg) translate(4px, -1px);
+  }
+  .routineHint.scribbleArch .scribbleMark {
+    justify-self: end;
+    width: clamp(92px, 28vw, 116px);
+    background: color-mix(in srgb, #ff9d00 88%, var(--camel) 12%);
+    transform: rotate(180deg) translate(2px, 10px);
+  }
 }
 @media (prefers-reduced-motion: reduce) { .rShot { transition: opacity .2s ease; } }
 
