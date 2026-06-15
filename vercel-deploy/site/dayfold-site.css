@@ -189,7 +189,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .showPhone img { position: absolute; inset: 9px; width: calc(100% - 18px); height: calc(100% - 18px); object-fit: cover; object-position: top; border-radius: 37px; opacity: 0; transform: scale(1.012); transition: opacity .6s cubic-bezier(.22,.61,.21,1), transform .6s cubic-bezier(.22,.61,.21,1); }
 .showPhone img.active { opacity: 1; transform: none; }
 .showPhoneGlow { position: absolute; inset: -12% -10%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, var(--glow, var(--camel-soft)), transparent 72%); opacity: .85; transition: background .6s ease; filter: blur(10px); }
-.showSteps { display: grid; }
+.showSteps { display: grid; padding-bottom: calc(100svh - 72px); }
 .spaceStep { min-height: 108vh; display: flex; flex-direction: column; justify-content: center; opacity: .3; transition: opacity .5s cubic-bezier(.22,.61,.21,1); }
 .spaceStep.active { opacity: 1; }
 .spaceStep:first-child { min-height: 86vh; }
@@ -213,15 +213,15 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .galArrow.next:hover { transform: translateY(-50%) translateX(2px); }
 .showPhone.hasModes .galArrow { display: grid; }
 @media (max-width: 1100px) { .galArrow.prev { left: -30px; } .galArrow.next { right: -30px; } }
-.galBar { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 11px; min-height: 24px; }
-.galBar[hidden] { display: none; }
-.galTop { display: inline-flex; align-items: center; justify-content: center; gap: 12px; }
+.galBar { display: flex; flex: 0 0 64px; height: 64px; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px; min-height: 64px; }
+.galBar[hidden] { display: flex; visibility: hidden; pointer-events: none; }
+.galTop { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 29px; }
 .galName { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .04em; color: var(--text-secondary); }
-.galSub { display: inline-flex; gap: 3px; padding: 3px; border-radius: 999px; background: var(--surface-sunken); border: 1px solid var(--border-subtle); }
-.galSub[hidden] { display: none; }
+.galSub { display: inline-flex; min-width: 74px; min-height: 29px; gap: 3px; padding: 3px; border-radius: 999px; background: var(--surface-sunken); border: 1px solid var(--border-subtle); }
+.galSub[hidden] { display: inline-flex; visibility: hidden; pointer-events: none; }
 .galSub button { appearance: none; border: none; cursor: pointer; min-width: 26px; height: 22px; padding: 0 8px; border-radius: 999px; background: transparent; color: var(--muted); font-family: var(--font-mono); font-size: 12px; font-weight: 600; line-height: 1; transition: background-color .18s ease, color .18s ease; }
 .galSub button.on { background: var(--paper-50); color: var(--ink-strong); box-shadow: 0 1px 2px rgba(42,36,32,.10); }
-.galDots { display: inline-flex; gap: 7px; }
+.galDots { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 17px; }
 .galDots i { width: 7px; height: 7px; border-radius: 50%; background: var(--paper-200); cursor: pointer; transition: background-color .25s ease, transform .25s ease; }
 .galDots i.on { background: var(--camel); transform: scale(1.25); }
 .galDots button { appearance: none; width: 17px; height: 17px; padding: 0; border: none; background: none; display: grid; place-items: center; cursor: pointer; }
@@ -233,6 +233,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 
 @media (max-width: 920px) {
   .showWrap { grid-template-columns: 1fr; gap: 0; }
+  .showSteps { padding-bottom: 0; }
   .showPhoneCol { position: sticky; top: 0; height: auto; padding: 14px 0 16px; z-index: 6; background: transparent; box-shadow: none; }
   .showPhone { width: min(60vw, 250px); }
   .galArrow.prev { left: -34px; }

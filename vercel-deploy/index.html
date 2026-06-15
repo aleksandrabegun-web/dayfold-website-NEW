@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/fonts.css">
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/colors.css">
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/typography.css">
-<link rel="stylesheet" href="site/dayfold-site.css?v=spaces-phone-1">
+<link rel="stylesheet" href="site/dayfold-site.css?v=spaces-phone-2">
 </head>
 <body>
 
@@ -540,23 +540,30 @@
           img.classList.toggle('active', on);
         });
 
-        var names = MODES[curSpace];
-        var multi = names && list.length > 1;
+        var names = MODES[curSpace] || [];
+        var multi = list.length > 1;
         phone.classList.toggle('hasModes', !!multi);
-        if (bar) bar.hidden = !multi;
-        if (!multi) return;
+        if (bar) bar.hidden = false;
 
-        if (nameEl) nameEl.textContent = names[curVar] || '';
+        var stepEl = document.querySelector('.spaceStep[data-i="' + curSpace + '"]');
+        var fallbackName = stepEl && stepEl.querySelector('h3') ? stepEl.querySelector('h3').textContent : '';
+        if (nameEl) nameEl.textContent = names[curVar] || fallbackName || '';
         if (dotsEl) {
           dotsEl.innerHTML = '';
-          list.forEach(function (_, k) {
+          var dotCount = Math.max(list.length, 1);
+          for (var k = 0; k < dotCount; k++) {
             var d = document.createElement('button');
             d.type = 'button';
-            d.setAttribute('aria-label', (names[k] || 'View ' + (k + 1)) + ' view');
+            d.setAttribute('aria-label', (names[k] || fallbackName || 'View ' + (k + 1)) + ' view');
             if (k === curVar) d.className = 'on';
-            d.addEventListener('click', function () { curVar = k; render(); });
+            if (multi) {
+              (function (idx) { d.addEventListener('click', function () { curVar = idx; render(); }); })(k);
+            } else {
+              d.setAttribute('aria-hidden', 'true');
+              d.tabIndex = -1;
+            }
             dotsEl.appendChild(d);
-          });
+          }
         }
         if (subEl) {
           subEl.hidden = !hasSub;
