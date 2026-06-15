@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dayfold OG card (1200×630)</title>
+<link rel="stylesheet" href="../_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/fonts.css">
+<link rel="stylesheet" href="../_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/colors.css">
+<link rel="stylesheet" href="../_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/typography.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  .card {
+    position: relative; width: 1200px; height: 630px; overflow: hidden;
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background:
+      radial-gradient(1000px 640px at 86% 18%, var(--camel-soft) 0%, transparent 62%),
+      linear-gradient(180deg, #FBF7F1 0%, #F6EFE5 100%);
+  }
+  .copy {
+    position: absolute; left: 84px; top: 0; bottom: 0; width: 640px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .brand { display: flex; align-items: center; gap: 16px; margin-bottom: 44px; }
+  .brand img { width: 56px; height: 56px; border-radius: 15px; display: block; }
+  .brand span { font-size: 31px; font-weight: 800; letter-spacing: -.03em; color: var(--ink-strong); }
+  .eyebrow {
+    margin: 0 0 22px; color: var(--sand-dark, var(--camel-deep));
+    text-transform: uppercase; letter-spacing: .16em; font-size: 16px; font-weight: 800;
+  }
+  h1 {
+    margin: 0 0 28px; font-size: 67px; font-weight: 800;
+    line-height: 1.0; letter-spacing: -.045em; color: var(--ink-strong);
+  }
+  h1 em { font-style: normal; color: var(--camel-deep); }
+  .sub { margin: 0; font-size: 24px; line-height: 1.45; color: var(--soft-ink, #6B6157); max-width: 21em; }
+  .meta { display: flex; align-items: center; gap: 12px; margin-top: 40px; }
+  .pill {
+    display: inline-flex; align-items: center; padding: 11px 22px; border-radius: 999px;
+    font-size: 18px; font-weight: 700;
+  }
+  .pill.solid { background: var(--camel); color: #fff; }
+  .pill.soft { background: rgba(255,255,255,.75); border: 1px solid var(--border-default, rgba(42,36,32,.12)); color: var(--ink); }
+  .phoneWrap {
+    position: absolute; right: 88px; top: 64px; width: 304px;
+    padding: 9px; border-radius: 46px;
+    background: rgba(255,255,255,.94);
+    border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 36px 70px rgba(42,36,32,.18);
+  }
+  .phoneWrap img { display: block; width: 100%; border-radius: 37px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="copy">
+      <div class="brand"><img src="../public/assets/dayfold-icon.png" alt=""><span>Dayfold</span></div>
+      <p class="eyebrow">Time awareness, not productivity pressure</p>
+      <h1>See where your life goes, one day at a time.</h1>
+      <p class="sub">A calm daily space for habits, time, tasks, and the people you care about.</p>
+      <div class="meta">
+        <span class="pill solid">Public beta is open</span>
+        <span class="pill soft">dayfold.app</span>
+      </div>
+    </div>
+    <figure class="phoneWrap" style="margin:0"><img src="../public/assets/screens/today.png" alt=""></figure>
+  </div>
+</body>
+</html>

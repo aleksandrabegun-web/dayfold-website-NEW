@@ -1,0 +1,55 @@
+/* ============================================================
+   Dayfold — Spacing, Radii, Shadows, Motion
+   ------------------------------------------------------------
+   Generous, calm spacing on a 4px base. Radii are soft but not
+   bubbly. Shadows are warm-tinted, low and diffuse — light
+   falling on paper, never hard drop-shadows. Motion is gentle
+   and quick; nothing bounces.
+   ============================================================ */
+
+:root {
+  /* --- Spacing (4px base) ----------------------------------- */
+  --space-px: 1px;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  32px;
+  --space-8:  40px;
+  --space-9:  48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+  --space-14: 128px;
+
+  /* --- Corner radii ----------------------------------------- */
+  --radius-xs:   6px;
+  --radius-sm:   8px;
+  --radius-md:   12px;   /* default control / chip */
+  --radius-lg:   16px;   /* cards */
+  --radius-xl:   22px;   /* panels */
+  --radius-2xl:  28px;   /* hero surfaces */
+  --radius-pill: 999px;
+
+  /* --- Shadows (warm brown-tinted, soft) -------------------- */
+  --shadow-xs:    0 1px 2px rgba(42, 36, 32, 0.05);
+  --shadow-sm:    0 1px 3px rgba(42, 36, 32, 0.06), 0 1px 2px rgba(42, 36, 32, 0.04);
+  --shadow-md:    0 4px 14px rgba(42, 36, 32, 0.08), 0 2px 5px rgba(42, 36, 32, 0.04);
+  --shadow-lg:    0 14px 36px rgba(42, 36, 32, 0.10), 0 5px 12px rgba(42, 36, 32, 0.05);
+  --shadow-xl:    0 28px 70px rgba(42, 36, 32, 0.14), 0 8px 20px rgba(42, 36, 32, 0.06);
+  --shadow-inset: inset 0 1px 2px rgba(42, 36, 32, 0.06);
+  --ring-focus:   0 0 0 3px rgba(176, 138, 110, 0.30);
+
+  /* --- Motion ----------------------------------------------- */
+  --ease-out:   cubic-bezier(0.22, 0.61, 0.36, 1);  /* @kind other */
+  --ease-in-out:cubic-bezier(0.45, 0.05, 0.25, 1);  /* @kind other */
+  --dur-fast:   120ms;  /* @kind other */
+  --dur-base:   200ms;  /* @kind other */
+  --dur-slow:   320ms;  /* @kind other */
+
+  /* --- Layout ----------------------------------------------- */
+  --content-max:  1120px;
+  --reading-max:  680px;
+}

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dayfold: Time awareness, not productivity pressure</title>
+<meta name="description" content="Dayfold helps you see where your life goes, one day at a time: scheduled time, tasks, habits, birthdays, journal notes, and the quiet space between them. A calm daily space, not another productivity machine.">
+<meta name="theme-color" content="#FBF7F1">
+<link rel="canonical" href="https://dayfold.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dayfold: see where your life goes, one day at a time">
+<meta property="og:description" content="A calm daily space for habits, time, tasks, and the people you care about. Public beta is open now.">
+<meta property="og:image" content="https://dayfold.app/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dayfold: see where your life goes, one day at a time">
+<meta name="twitter:description" content="A calm daily space for habits, time, tasks, and the people you care about. Public beta is open now.">
+<meta name="twitter:image" content="https://dayfold.app/assets/og-card.png">
+<link rel="icon" href="public/assets/dayfold-icon.png">
+<link rel="apple-touch-icon" href="public/assets/dayfold-icon.png">
+<link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/colors.css">
+<link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/typography.css">
+<link rel="stylesheet" href="site/dayfold-site.css">
+</head>
+<body>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" rx="22" fill="#2A2420"></rect>
+    <path d="M34 30 h26 a6 6 0 0 1 6 6 v34 l-19 -10 -19 10 v-34 a6 6 0 0 1 6 -6 z" fill="#E7C9A3"></path>
+  </svg>
+</template>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Dayfold home"><img class="logoCompact" src="public/assets/dayfold-icon.png" alt=""><span>Dayfold</span></a>
+  <nav class="navlinks">
+    <a href="#product">Product</a>
+    <a href="#screens">Screens</a>
+    <a href="#privacy-note">Privacy</a>
+    <a class="navCta" href="#join">Join beta</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="heroCopy">
+      <p class="eyebrow rv">Time awareness, not productivity pressure</p>
+      <h1 class="rv" style="--d:60ms">See where your life goes, one day at a time.</h1>
+      <p class="lead rv" style="--d:130ms">Dayfold helps you understand how a day actually unfolds: scheduled time, loose tasks, habits, birthdays, journal notes, roles, and the quiet space between them.</p>
+      <form class="heroForm rv" style="--d:200ms" data-beta>
+        <input type="email" name="email" placeholder="you@email.com" aria-label="Your email" required>
+        <button class="button primary" type="submit">Join the beta</button>
+      </form>
+      <p class="heroAside rv" style="--d:240ms">Now opening for public beta. Or <a href="#screens">see the real screens</a> first.</p>
+      <div class="heroMeta rv" style="--d:300ms">
+        <span class="badge"><i data-lucide="smartphone"></i>iPhone now · Mac soon</span>
+        <span class="badge accent"><span class="dot"></span>Free while in beta</span>
+        <span class="badge"><i data-lucide="shield-check"></i>No ads, no data selling</span>
+      </div>
+    </div>
+    <div class="heroStack rv" style="--d:160ms" aria-label="Dayfold app screenshots">
+      <figure class="phoneShot shotRoles"><img src="public/assets/screens/roles.png" alt="Dayfold Roles screen"></figure>
+      <figure class="phoneShot shotCalendar"><img src="public/assets/screens/calendar-week.png" alt="Dayfold Calendar screen"></figure>
+      <figure class="phoneShot shotFront"><img src="public/assets/screens/today.png" alt="Dayfold Today screen"></figure>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section id="product" class="productSection">
+    <div class="sectionIntro centered">
+      <p class="eyebrow rv">Today</p>
+      <h2 class="rv" style="--d:60ms">Built around the whole day.</h2>
+      <p class="sectionLead rv" style="--d:130ms">Today is where the day comes together. Your schedule and timeline sit at the center, with routines woven in, and around them the things that matter now: habits, notes, the day’s tasks, and the birthdays you don’t want to miss.</p>
+    </div>
+    <div class="productPair">
+      <div class="todayTL rv" data-tl aria-label="Dayfold day timeline example">
+        <div class="tlTop"><span class="d"></span><b>Today</b><time>Tue · Jun 9</time></div>
+        <div class="tlBody">
+          <span class="tlSpine"><i></i></span>
+          <span class="tlNow"></span>
+
+          <div class="tlRow" style="--nd:140ms"><time>7:00 AM</time><span class="tlNode" style="--nc:var(--camel)"></span><div class="tlLabel tlStagger"><h4>Rise and Shine</h4></div></div>
+          <div class="tlRow"><span></span><span></span><div class="tlFree tlStagger" style="--nd:240ms"><span class="ft"><i data-lucide="clock"></i>You have 1 hour 45 min free time</span><div class="tlPills"><span><i data-lucide="list-checks"></i>Plan</span><span><i data-lucide="plus"></i>Add</span></div></div></div>
+
+          <div class="tlRow" style="--nd:360ms"><time>9:00 AM</time><span class="tlNode" style="--nc:var(--ochre)"></span><div class="tlBlock tlStagger" style="--bbg:var(--ochre-soft);--bbar:var(--ochre)"><h4>Workout</h4><small>1h</small></div></div>
+          <div class="tlRow"><span></span><span></span><div class="tlFree tlStagger" style="--nd:470ms"><span class="ft"><i data-lucide="clock"></i>You have 2 hours 15 min free time</span></div></div>
+
+          <div class="tlRow" style="--nd:580ms"><time>12:00 PM</time><span class="tlNode" style="--nc:var(--olive)"></span><div class="tlBlock tall tlStagger" style="--bbg:var(--olive-soft);--bbar:var(--olive)"><h4>Client tattoo session</h4><small>2h</small></div></div>
+          <div class="tlRow"><span></span><span></span><div class="tlFree tlStagger" style="--nd:700ms"><span class="ft"><i data-lucide="clock"></i>You have 8 hours free time</span></div></div>
+
+          <div class="tlRow" style="--nd:820ms"><time>10:00 PM</time><span class="tlNode" style="--nc:var(--lavender)"></span><div class="tlLabel tlStagger"><h4>Wind Down</h4></div></div>
+        </div>
+      </div>
+      <div class="todayMods rv" style="--d:80ms">
+        <p class="h">What shows up in Today</p>
+        <div class="modRow on" data-mod>
+          <span class="modGrip"><i data-lucide="grip-vertical"></i></span>
+          <span class="modIc" style="--mcs:var(--camel-soft);--mc:var(--camel-deep)"><i data-lucide="clock"></i></span>
+          <span class="modText"><b>Schedule &amp; timeline</b><span>Your day, hour by hour, routines included</span></span>
+          <span class="modLock">Always</span>
+        </div>
+        <div class="modRow on" data-mod>
+          <span class="modGrip"><i data-lucide="grip-vertical"></i></span>
+          <span class="modIc" style="--mcs:var(--olive-soft);--mc:var(--olive-deep)"><i data-lucide="repeat"></i></span>
+          <span class="modText"><b>Habits</b><span>Today’s soft bubbles</span></span>
+          <button class="modToggle" data-toggle aria-label="Toggle Habits"></button>
+        </div>
+        <div class="modRow on" data-mod>
+          <span class="modGrip"><i data-lucide="grip-vertical"></i></span>
+          <span class="modIc" style="--mcs:var(--sage-soft);--mc:var(--sage-deep)"><i data-lucide="square-check-big"></i></span>
+          <span class="modText"><b>Today’s tasks</b><span>What needs doing now</span></span>
+          <button class="modToggle" data-toggle aria-label="Toggle tasks"></button>
+        </div>
+        <div class="modRow on" data-mod>
+          <span class="modGrip"><i data-lucide="grip-vertical"></i></span>
+          <span class="modIc" style="--mcs:var(--rose-soft);--mc:var(--rose-deep)"><i data-lucide="notebook-pen"></i></span>
+          <span class="modText"><b>Journal &amp; notes</b><span>A line for the day</span></span>
+          <button class="modToggle" data-toggle aria-label="Toggle journal"></button>
+        </div>
+        <div class="modRow on" data-mod>
+          <span class="modGrip"><i data-lucide="grip-vertical"></i></span>
+          <span class="modIc" style="--mcs:var(--clay-soft);--mc:var(--clay-deep)"><i data-lucide="cake"></i></span>
+          <span class="modText"><b>Birthdays</b><span>People you don’t want to miss</span></span>
+          <button class="modToggle" data-toggle aria-label="Toggle birthdays"></button>
+        </div>
+        <p class="cap">Turn any section on or off, and drag to reorder. Only the timeline always stays, so Today shows exactly what you want to see.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE - sticky scrollytelling (merges screens + spaces) -->
+  <section id="screens" class="showcase">
+    <div class="sectionIntro centered">
+      <p class="eyebrow rv">One app, gently divided</p>
+      <h2 class="rv" style="--d:60ms">Everything, folded into one calm app.</h2>
+    </div>
+    <div class="showWrap">
+      <div class="showPhoneCol">
+        <div class="showPhone" data-gallery>
+          <div class="showPhoneGlow"></div>
+          <img loading="lazy" decoding="async" data-shot="2" data-var="0" class="active" src="public/assets/screens/calendar-list.png" alt="Dayfold Calendar, list view">
+          <img loading="lazy" decoding="async" data-shot="2" data-var="1" data-sub="Roles" data-sublabel="Colored by role" src="public/assets/screens/calendar-day-roles.png" alt="Dayfold Calendar, single day, colored by role">
+          <img loading="lazy" decoding="async" data-shot="2" data-var="1" data-sub="Lists" data-sublabel="Colored by list" src="public/assets/screens/calendar-day-lists.png" alt="Dayfold Calendar, single day, colored by list">
+          <img loading="lazy" decoding="async" data-shot="2" data-var="2" data-sub="2" data-sublabel="2 days" src="public/assets/screens/calendar-multiday-2.png" alt="Dayfold Calendar, multi-day view, two days">
+          <img loading="lazy" decoding="async" data-shot="2" data-var="2" data-sub="3" data-sublabel="3 days" src="public/assets/screens/calendar-multiday-3.png" alt="Dayfold Calendar, multi-day view, three days">
+          <img loading="lazy" decoding="async" data-shot="2" data-var="3" data-sub="Classic" data-sublabel="Week classic" src="public/assets/screens/calendar-week-classic.png" alt="Dayfold Calendar, classic week grid">
+          <img loading="lazy" decoding="async" data-shot="2" data-var="3" data-sub="Compact" data-sublabel="Week compact" src="public/assets/screens/calendar-week-compact.png" alt="Dayfold Calendar, compact week agenda">
+          <img loading="lazy" decoding="async" data-shot="2" data-var="4" src="public/assets/screens/calendar-month.png" alt="Dayfold Calendar, classic month view">
+          <img loading="lazy" decoding="async" data-shot="2" data-var="5" src="public/assets/screens/calendar-year.png" alt="Dayfold Calendar, year view">
+          <img loading="lazy" decoding="async" data-shot="3" data-var="0" data-sub="Inbox" data-sublabel="Inbox" src="public/assets/screens/tasks-inbox.png" alt="Dayfold Tasks, inbox view">
+          <img loading="lazy" decoding="async" data-shot="3" data-var="0" data-sub="Today" data-sublabel="Today" src="public/assets/screens/tasks-today.png" alt="Dayfold Tasks, today view">
+          <img loading="lazy" decoding="async" data-shot="3" data-var="1" src="public/assets/screens/tasks-all.png" alt="Dayfold Tasks, all lists grouped">
+          <img loading="lazy" decoding="async" data-shot="3" data-var="2" src="public/assets/screens/tasks-detail.png" alt="Dayfold Tasks, expanded task with checklist and attachments">
+          <img loading="lazy" decoding="async" data-shot="4" data-var="0" src="public/assets/screens/habits-home.png" alt="Dayfold Habits, home list with streak counts">
+          <img loading="lazy" decoding="async" data-shot="4" data-var="1" data-sub="Month" data-sublabel="Monthly view" src="public/assets/screens/habit-detail-month.png" alt="Dayfold Habits, single habit stats, month">
+          <img loading="lazy" decoding="async" data-shot="4" data-var="1" data-sub="Year" data-sublabel="Yearly view" src="public/assets/screens/habit-detail-year.png" alt="Dayfold Habits, single habit stats, year">
+          <img loading="lazy" decoding="async" data-shot="4" data-var="2" src="public/assets/screens/habits-overall.png" alt="Dayfold Habits, overall stats across all habits">
+          <img loading="lazy" decoding="async" data-shot="4" data-var="3" src="public/assets/screens/habit-gallery.png" alt="Dayfold Habits, suggested gallery">
+          <img loading="lazy" decoding="async" data-shot="4" data-var="4" src="public/assets/screens/habit-new.png" alt="Dayfold Habits, new habit with goal and frequency">
+          <img loading="lazy" decoding="async" data-shot="5" data-var="0" src="public/assets/screens/journal.png" alt="Dayfold Journal, diary space">
+          <img loading="lazy" decoding="async" data-shot="5" data-var="1" src="public/assets/screens/journal-spaces.png" alt="Dayfold Journal, list of spaces">
+          <img loading="lazy" decoding="async" data-shot="6" data-var="0" src="public/assets/screens/birthdays.png" alt="Dayfold Birthdays screen">
+          <img loading="lazy" decoding="async" data-shot="7" data-var="0" src="public/assets/screens/projects-boards.png" alt="Dayfold Projects, boards list">
+          <img loading="lazy" decoding="async" data-shot="7" data-var="1" src="public/assets/screens/projects-dreaming.png" alt="Dayfold Projects, Dreaming list with photo cards and links">
+          <img loading="lazy" decoding="async" data-shot="7" data-var="2" src="public/assets/screens/projects-booked.png" alt="Dayfold Projects, Booked list with dates and a PDF">
+          <img loading="lazy" decoding="async" data-shot="7" data-var="3" src="public/assets/screens/projects-pack.png" alt="Dayfold Projects, packing cards with checklists">
+          <img loading="lazy" decoding="async" data-shot="7" data-var="4" src="public/assets/screens/projects-card.png" alt="Dayfold Projects, open card with a link and images">
+          <img loading="lazy" decoding="async" data-shot="7" data-var="5" src="public/assets/screens/projects-actions.png" alt="Dayfold Projects, card actions including add to tasks and move card">
+          <img loading="lazy" decoding="async" data-shot="8" data-var="0" src="public/assets/screens/pomodoro.png" alt="Dayfold Pomodoro screen">
+          <button class="galArrow prev" data-gal-prev aria-label="Previous view"><i data-lucide="chevron-left"></i></button>
+          <button class="galArrow next" data-gal-next aria-label="Next view"><i data-lucide="chevron-right"></i></button>
+        </div>
+        <div class="galBar" data-gal-bar hidden>
+          <span class="galTop">
+            <span class="galName" data-gal-name></span>
+            <span class="galSub" data-gal-sub hidden></span>
+          </span>
+          <span class="galDots" data-gal-dots></span>
+        </div>
+      </div>
+      <div class="showSteps">
+        <article class="spaceStep" data-i="3" style="--sc:var(--sage-deep);--scsoft:var(--sage-soft);--glow:var(--sage-soft)">
+          <div class="stepShot"><img loading="lazy" src="public/assets/screens/tasks-inbox.png" alt="Dayfold Tasks screen"></div>
+          <span class="stepNum">01 / 07</span>
+          <span class="stepEyebrow"><span class="scIc"><i data-lucide="square-check-big"></i></span>Loose &amp; light</span>
+          <h3>Tasks</h3>
+          <p>Capture errands, client notes, and small intentions without forcing each into a calendar slot. Flip between your inbox and just today, group everything into lists, and when something needs more, a task quietly holds it: a checklist, a reminder, the link or file you'll want when you get to it.</p>
+          <span class="modeHint"><i data-lucide="arrow-left-right"></i>Toggle Inbox / Today, swipe for all lists and an open task</span>
+        </article>
+        <article class="spaceStep" data-i="2" style="--sc:var(--steel-deep);--scsoft:var(--steel-soft);--glow:var(--steel-soft)">
+          <div class="stepShot"><img loading="lazy" src="public/assets/screens/calendar-list.png" alt="Dayfold Calendar screen"></div>
+          <span class="stepNum">02 / 07</span>
+          <span class="stepEyebrow"><span class="scIc"><i data-lucide="calendar"></i></span>Timed blocks</span>
+          <h3>Calendar</h3>
+          <p>Scheduled time in soft blocks: enough structure to read the day, enough air to breathe. See it as a list, a single day, two or three days side by side, the full week as a grid or a compact agenda, the classic month, or the whole year at a glance. Color each day by role or by list to see the shape of your time. Your Apple and Google calendars flow in too, so nothing lives in two places.</p>
+          <span class="modeHint"><i data-lucide="arrow-left-right"></i>Swipe the phone: List, Day, Multiday, Week, Month, Year</span>
+        </article>
+        <article class="spaceStep" data-i="7" style="--sc:var(--sand-deep);--scsoft:var(--sand-soft);--glow:var(--sand-soft)">
+          <div class="stepShot"><img loading="lazy" src="public/assets/screens/projects-dreaming.png" alt="Dayfold Projects screen"></div>
+          <span class="stepNum">03 / 07</span>
+          <span class="stepEyebrow"><span class="scIc"><i data-lucide="kanban"></i></span>Move things across</span>
+          <h3>Projects</h3>
+          <p>Wrap any project, whether a trip, a launch, a home move, or a client job, into a board and slide cards across it as things progress. A card can hold cover photos and links, start and due dates, a file, or a checklist inside, and turn into a task the moment it needs doing.</p>
+          <span class="modeHint"><i data-lucide="arrow-left-right"></i>Swipe: Boards, Cards, Dates, Checklists, Detail, Actions</span>
+        </article>
+        <article class="spaceStep" data-i="4" style="--sc:var(--olive-deep);--scsoft:var(--olive-soft);--glow:var(--olive-soft)">
+          <div class="stepShot"><img loading="lazy" src="public/assets/screens/habits-home.png" alt="Dayfold Habits screen"></div>
+          <span class="stepNum">04 / 07</span>
+          <span class="stepEyebrow"><span class="scIc"><i data-lucide="repeat"></i></span>Quiet rhythms</span>
+          <h3>Habits</h3>
+          <p>Repeated rhythms, tracked gently. Give one a goal if you want, ongoing or a run of days, and how often it should happen, down to a few times a day. Then watch the month, or the whole year, quietly fill in. No streak to defend.</p>
+          <span class="modeHint"><i data-lucide="arrow-left-right"></i>Swipe: Habits, Detail, Overall, Gallery, New</span>
+        </article>
+        <article class="spaceStep" data-i="5" style="--sc:var(--rose-deep);--scsoft:var(--rose-soft);--glow:var(--rose-soft)">
+          <div class="stepShot"><img loading="lazy" src="public/assets/screens/journal.png" alt="Dayfold Journal screen"></div>
+          <span class="stepNum">05 / 07</span>
+          <span class="stepEyebrow"><span class="scIc"><i data-lucide="notebook-pen"></i></span>A line a day</span>
+          <h3>Journal</h3>
+          <p>Keep reflections close to the day, so the timeline carries emotional context, not only events. Keep separate spaces for whatever you write: a diary, quick notes, Sunday's sermon, a place for ideas, so it doesn't all pile into one list.</p>
+          <span class="modeHint"><i data-lucide="arrow-left-right"></i>Swipe: Diary, Spaces</span>
+        </article>
+        <article class="spaceStep" data-i="6" style="--sc:var(--clay-deep);--scsoft:var(--clay-soft);--glow:var(--clay-soft)">
+          <div class="stepShot"><img loading="lazy" src="public/assets/screens/birthdays.png" alt="Dayfold Birthdays screen"></div>
+          <span class="stepNum">06 / 07</span>
+          <span class="stepEyebrow"><span class="scIc"><i data-lucide="cake"></i></span>People, not reminders</span>
+          <h3>Birthdays</h3>
+          <p>The people you care about surface right inside Today, so a birthday never quietly slips past you again. Add a small note too: gift ideas, or the flowers they love. Set a gentle nudge a week ahead, the day before, or the morning of, enough time to actually do something about it.</p>
+        </article>
+        <article class="spaceStep" data-i="8" style="--sc:var(--sky-deep);--scsoft:var(--sky-soft);--glow:var(--sky-soft)">
+          <div class="stepShot"><img loading="lazy" src="public/assets/screens/pomodoro.png" alt="Dayfold Pomodoro screen"></div>
+          <span class="stepNum">07 / 07</span>
+          <span class="stepEyebrow"><span class="scIc"><i data-lucide="timer"></i></span>Gentle focus</span>
+          <h3>Pomodoro</h3>
+          <p>Focus when you want it: rounds, short breaks, and a quiet ring. A calm timer, never pressure to perform.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUTINES -->
+  <section class="routineBand rv">
+    <div class="routineCopy">
+      <p class="eyebrow">Routines, woven in</p>
+      <h2>Your routines live in the day, not in your head.</h2>
+      <p class="sectionLead">Most productivity apps quietly skip the things you do every day. So your morning, the school run, a coding block end up nowhere, or get re-added by hand. Dayfold keeps recurring routines right in the calendar, where the day actually happens.</p>
+      <p class="sectionLead">And when you'd rather see only what's new, hide them with one tap. For anyone whose day runs on structure, that small switch is the whole point.</p>
+    </div>
+    <div class="routineDemo">
+      <div class="routineDayHead">
+        <span>Same Monday, your call</span>
+        <button class="routineSwitch on" id="routineSwitch" role="switch" aria-checked="true">
+          <span class="rsLabel">Show routines</span>
+          <span class="rsTrack"><span class="rsKnob"></span></span>
+        </button>
+      </div>
+      <div class="routinePhone" id="routineDay">
+        <div class="rViewport">
+          <img loading="lazy" decoding="async" class="rShot rOn" src="public/assets/screens/calendar-routines-on.png" alt="Dayfold week with routines shown, the day full of recurring blocks">
+          <img loading="lazy" decoding="async" class="rShot rOff" src="public/assets/screens/calendar-routines-off.png" alt="Dayfold week with routines hidden, only the new events left">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLE PROOF -->
+  <section class="roleProof">
+    <div class="roleProofCard rv">
+      <div>
+        <p class="eyebrow">What you actually get back</p>
+        <h2>Your day, told by role, not by a to-do count.</h2>
+        <p class="sectionLead">Most apps end the day with “3 of 7 done.” Dayfold can end it with a softer, more honest picture: which aspects of life took your hours, in clear percentages, and where the gaps are.</p>
+        <p class="sectionLead roleWhy">Why it helps: over a week the pattern speaks for itself. The role that quietly slipped away, the one that quietly took everything. Not to optimize, just to notice, so you can rebalance on purpose instead of by accident. And if it’s not for you, switch roles off entirely.</p>
+        <span class="roleFree"><i data-lucide="clock"></i>You have 1 hour 45 min free time</span>
+      </div>
+      <div class="roleBars">
+        <div class="roleTrack" style="--rc:var(--steel)">
+          <div class="roleHead"><span class="name"><i></i>Tattooer</span><span class="val">32% · 14h 30m</span></div>
+          <div class="roleBar"><i style="--rw:.32;--rd:60ms"></i></div>
+        </div>
+        <div class="roleTrack" style="--rc:var(--rose)">
+          <div class="roleHead"><span class="name"><i></i>Woman</span><span class="val">25% · 11h 30m</span></div>
+          <div class="roleBar"><i style="--rw:.25;--rd:160ms"></i></div>
+        </div>
+        <div class="roleTrack" style="--rc:var(--olive)">
+          <div class="roleHead"><span class="name"><i></i>Developer</span><span class="val">19% · 8h 30m</span></div>
+          <div class="roleBar"><i style="--rw:.19;--rd:260ms"></i></div>
+        </div>
+        <div class="roleTrack" style="--rc:var(--lavender)">
+          <div class="roleHead"><span class="name"><i></i>Mother</span><span class="val">15% · 7h</span></div>
+          <div class="roleBar"><i style="--rw:.15;--rd:360ms"></i></div>
+        </div>
+        <div class="roleTrack" style="--rc:var(--sandstone)">
+          <div class="roleHead"><span class="name"><i></i>Housekeeper</span><span class="val">8% · 3h 45m</span></div>
+          <div class="roleBar"><i style="--rw:.08;--rd:460ms"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPEARANCE -->
+  <section class="appearanceSection">
+    <div class="sectionIntro compactIntro">
+      <p class="eyebrow rv">Personal appearance</p>
+      <h2 class="rv" style="--d:60ms">Make it yours. A little sandbox.</h2>
+      <p class="sectionLead rv" style="--d:130ms">Just like the app: pick light or dark, choose a background, and set an accent color. Try it right here: the whole page changes with you, and your choice is remembered.</p>
+    </div>
+    <div class="apCtl rv" style="--d:120ms">
+      <div class="apGroup">
+        <span>Theme</span>
+        <div class="apSeg" data-ctl="theme">
+          <b data-val="light"><i data-lucide="sun"></i>Light</b>
+          <b data-val="dark"><i data-lucide="moon"></i>Dark</b>
+          <b data-val="system"><i data-lucide="monitor"></i>System</b>
+        </div>
+      </div>
+      <div class="apGroup">
+        <span>Background</span>
+        <div class="apSeg" data-ctl="bg">
+          <b data-val="sand">Sand</b>
+          <b data-val="mist">Mist</b>
+          <b data-val="stone">Stone</b>
+        </div>
+      </div>
+      <div class="apGroup">
+        <span>Accent</span>
+        <div class="apSw" data-ctl="accent">
+          <button data-val="clay"     style="--sw:#866C5F" aria-label="Clay"></button>
+          <button data-val="rose"     style="--sw:#C07A6E" aria-label="Terra rose"></button>
+          <button data-val="ochre"    style="--sw:#C29366" aria-label="Burnt ochre"></button>
+          <button data-val="sand"     style="--sw:#CDB094" aria-label="Sandstone"></button>
+          <button data-val="olive"    style="--sw:#A6AF8A" aria-label="Olive"></button>
+          <button data-val="sage"     style="--sw:#7D907F" aria-label="Sage"></button>
+          <button data-val="steel"    style="--sw:#8898A8" aria-label="Dusty steel"></button>
+          <button data-val="sky"      style="--sw:#A8BDCB" aria-label="Sky"></button>
+          <button data-val="lavender" style="--sw:#9C93A5" aria-label="Lavender"></button>
+          <button data-val="gray"     style="--sw:#A3A19C" aria-label="Gray"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING STATEMENT -->
+  <section class="closing rv">
+    <p class="eyebrow">A softer kind of productivity</p>
+    <h2>No streaks to defend.<br>No dashboards to feed.<br>Just your day, gently in view.</h2>
+  </section>
+
+  <!-- PRIVACY BAND -->
+  <section id="privacy-note" class="privacyBand rv">
+    <div>
+      <p class="eyebrow">Private by design</p>
+      <h2>Your days stay yours.</h2>
+    </div>
+    <div class="privacyCopy">
+      <p>Journal entries, notes, the shape of your time: everything you put into Dayfold is private by default. No ads, no tracking, and your data is never sold or shared. It’s a mirror you glance at, then close, not a feed for anyone else.</p>
+      <p><a class="privacyLink" href="Privacy.html">Read the full privacy policy<i data-lucide="arrow-right"></i></a></p>
+      <p class="statusNote"><strong>Status:</strong> Dayfold is in active development. The screens shown here reflect the working app experience.</p>
+    </div>
+  </section>
+
+  <!-- MAKER -->
+  <section class="makerBand rv">
+    <img class="makerIcon" src="public/assets/dayfold-icon.png" alt="Dayfold icon">
+    <p class="eyebrow">Why Dayfold exists</p>
+    <p class="makerText">Dayfold is made by one person: a tattoo artist, a mother, and a developer who needed a single calm place to hold all of it. It’s shaped every day around real days: client sessions, school runs, code, and the quiet hours in between.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faqSection" aria-label="Dayfold frequently asked questions">
+    <div class="sectionIntro compactIntro">
+      <p class="eyebrow rv">FAQ</p>
+      <h2 class="rv" style="--d:60ms">For people who want to feel present again.</h2>
+    </div>
+    <div class="faqGrid">
+      <article class="rv"><h3>Is Dayfold a productivity app?</h3><p>Not in the usual sense. Dayfold includes tasks and schedules, but the point is not to squeeze more out of the day. It helps you see where time, attention, roles, and energy actually went.</p></article>
+      <article class="rv" style="--d:60ms"><h3>Does it punish unfinished days?</h3><p>No. Dayfold avoids guilt mechanics. Unfinished days still tell you something. The point is visibility, not another scoreboard.</p></article>
+      <article class="rv" style="--d:120ms"><h3>Does it work with my existing calendar?</h3><p>Yes. Dayfold reads your Apple and Google calendars, so the events you already keep show up right alongside your habits, tasks, and roles. No copying, no second place to check.</p></article>
+      <article class="rv" style="--d:180ms"><h3>Who can see what I write?</h3><p>Only you. Your days, journal entries, and notes stay private by default. Dayfold is a mirror you glance at and close, not a feed for anyone else.</p></article>
+      <article class="rv" style="--d:240ms"><h3>Will it stay free?</h3><p>Dayfold is free while in beta. After launch there will be one simple, fairly priced plan. Never ads, and never your data as the price. Beta testers will hear about it first.</p></article>
+      <article class="rv" style="--d:300ms"><h3>When is the Mac app coming?</h3><p>Dayfold lives on iPhone first. The Mac app is next in line and already in the works. Join the beta and you’ll know the moment it lands.</p></article>
+    </div>
+    <div class="faqCta rv" id="join">
+      <div>
+        <p>Want to try Dayfold early?</p>
+        <span>Public beta is open now. Drop your email and we’ll send a TestFlight invite, updates, and a way to share feedback.</span>
+        <div class="availRow">
+          <span class="badge"><i data-lucide="smartphone"></i>iPhone now, Mac soon</span>
+          <span class="badge"><span class="dot"></span>Free while in beta</span>
+        </div>
+      </div>
+      <form class="waitForm" data-beta>
+        <input type="email" name="email" placeholder="you@email.com" aria-label="Your email" required>
+        <button class="button primary" type="submit">Join</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div><strong>Dayfold:</strong><span> A calmer way to see where your days go.</span></div>
+  <div class="footerLinks">
+    <a href="Privacy.html">Privacy</a>
+    <a href="Terms.html">Terms</a>
+    <a href="mailto:hello@dayfold.app">hello@dayfold.app</a>
+  </div>
+</footer>
+
+<button class="apFab" id="apFab" aria-label="Change appearance"><i data-lucide="palette"></i></button>
+<div class="apPop" id="apPop" role="dialog" aria-label="Appearance">
+  <div class="apHead"><b>Appearance</b><button class="apReset" data-reset>Reset</button></div>
+  <div class="apGroup">
+    <span>Theme</span>
+    <div class="apSeg" data-ctl="theme"><b data-val="light"><i data-lucide="sun"></i>Light</b><b data-val="dark"><i data-lucide="moon"></i>Dark</b><b data-val="system"><i data-lucide="monitor"></i>System</b></div>
+  </div>
+  <div class="apGroup">
+    <span>Background</span>
+    <div class="apSeg" data-ctl="bg"><b data-val="sand">Sand</b><b data-val="mist">Mist</b><b data-val="stone">Stone</b></div>
+  </div>
+  <div class="apGroup">
+    <span>Accent</span>
+    <div class="apSw" data-ctl="accent">
+      <button data-val="clay" style="--sw:#866C5F" aria-label="Clay"></button>
+      <button data-val="rose" style="--sw:#C07A6E" aria-label="Terra rose"></button>
+      <button data-val="ochre" style="--sw:#C29366" aria-label="Burnt ochre"></button>
+      <button data-val="sand" style="--sw:#CDB094" aria-label="Sandstone"></button>
+      <button data-val="olive" style="--sw:#A6AF8A" aria-label="Olive"></button>
+      <button data-val="sage" style="--sw:#7D907F" aria-label="Sage"></button>
+      <button data-val="steel" style="--sw:#8898A8" aria-label="Dusty steel"></button>
+      <button data-val="sky" style="--sw:#A8BDCB" aria-label="Sky"></button>
+      <button data-val="lavender" style="--sw:#9C93A5" aria-label="Lavender"></button>
+      <button data-val="gray" style="--sw:#A3A19C" aria-label="Gray"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lucide@0.456.0/dist/umd/lucide.min.js"></script>
+<script>
+  // Swap this with your real TestFlight link and the buttons will send people straight there.
+  var TESTFLIGHT_URL = '';
+  (function () {
+    try { lucide.createIcons(); } catch (e) {}
+
+    // Mode hints: desktop users get arrows, touch users get swipe wording.
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('.modeHint').forEach(function (h) {
+        [].slice.call(h.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            n.textContent = n.textContent
+              .replace('Swipe the phone:', 'Use the arrows:')
+              .replace('Swipe:', 'Arrows:')
+              .replace('swipe for', 'use the arrows for');
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll('form[data-beta]').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = (form.querySelector('input[type=email]') || {}).value || '';
+        var msg;
+        if (TESTFLIGHT_URL) {
+          window.open(TESTFLIGHT_URL, '_blank');
+          msg = 'Thanks! TestFlight is opening. See you inside.';
+        } else {
+          var subject = encodeURIComponent('Dayfold beta access');
+          var body = encodeURIComponent('Please add me to the Dayfold beta: ' + email);
+          window.location.href = 'mailto:hello@dayfold.app?subject=' + subject + '&body=' + body;
+          msg = 'Thanks! Your email app just opened. Hit send and you\u2019re in.';
+        }
+        form.classList.add('sent');
+        form.innerHTML = '<span class="formThanks"><i data-lucide="mail-check"></i>' + msg + '</span>';
+        try { lucide.createIcons(); } catch (err) {}
+      });
+    });
+
+    // Showcase: scroll picks the centered space; within a space you can
+    // swipe / tap arrows / tap dots to browse its different views (modes).
+    (function () {
+      var steps = document.querySelectorAll('.spaceStep');
+      var phone = document.querySelector('.showPhone[data-gallery]');
+      var glow = document.querySelector('.showPhoneGlow');
+      if (!steps.length || !phone) return;
+      var imgs = phone.querySelectorAll('img');
+      var bar = document.querySelector('[data-gal-bar]');
+      var nameEl = document.querySelector('[data-gal-name]');
+      var dotsEl = document.querySelector('[data-gal-dots]');
+      var prevBtn = document.querySelector('[data-gal-prev]');
+      var nextBtn = document.querySelector('[data-gal-next]');
+      var subEl = document.querySelector('[data-gal-sub]');
+
+      // Mode labels per space (data-i). Spaces not listed = single view.
+      var MODES = { '2': ['List', 'Day', 'Multiday', 'Week', 'Month', 'Year'], '3': ['Tasks', 'All', 'Detail'], '4': ['Habits', 'Detail', 'Overall', 'Gallery', 'New'], '5': ['Diary', 'Spaces'], '7': ['Boards', 'Cards', 'Dates', 'Checklists', 'Detail', 'Actions'] };
+
+      // Group images by space, then by variant index. A variant holding more
+      // than one image (distinguished by data-sub) gets an inline sub-toggle
+      // (e.g. Multiday switches between 2 and 3 days within a single view).
+      var groups = {};
+      imgs.forEach(function (img) {
+        var s = img.getAttribute('data-shot');
+        var v = img.getAttribute('data-var');
+        groups[s] = groups[s] || {};
+        (groups[s][v] = groups[s][v] || []).push(img);
+      });
+      // space -> ordered array of { v, imgs }
+      var order = {};
+      Object.keys(groups).forEach(function (s) {
+        order[s] = Object.keys(groups[s])
+          .sort(function (a, b) { return (+a) - (+b); })
+          .map(function (v) { return { v: +v, imgs: groups[s][v] }; });
+      });
+
+      var curSpace = steps[0].getAttribute('data-i');
+      var curVar = 0;
+      var curSub = null;
+
+      function render() {
+        var list = order[curSpace] || [];
+        if (curVar >= list.length) curVar = 0;
+        if (curVar < 0) curVar = list.length - 1;
+        var group = list[curVar] || { v: 0, imgs: [] };
+        var subs = group.imgs;
+        var hasSub = subs.length > 1;
+        if (hasSub) {
+          var subVals = subs.map(function (im) { return im.getAttribute('data-sub'); });
+          if (subVals.indexOf(curSub) < 0) curSub = subVals[0];
+        } else {
+          curSub = null;
+        }
+        imgs.forEach(function (img) {
+          var on = img.getAttribute('data-shot') === curSpace
+            && (+img.getAttribute('data-var')) === group.v
+            && (!hasSub || img.getAttribute('data-sub') === curSub);
+          img.classList.toggle('active', on);
+        });
+
+        var names = MODES[curSpace];
+        var multi = names && list.length > 1;
+        phone.classList.toggle('hasModes', !!multi);
+        if (bar) bar.hidden = !multi;
+        if (!multi) return;
+
+        if (nameEl) nameEl.textContent = names[curVar] || '';
+        if (dotsEl) {
+          dotsEl.innerHTML = '';
+          list.forEach(function (_, k) {
+            var d = document.createElement('button');
+            d.type = 'button';
+            d.setAttribute('aria-label', (names[k] || 'View ' + (k + 1)) + ' view');
+            if (k === curVar) d.className = 'on';
+            d.addEventListener('click', function () { curVar = k; render(); });
+            dotsEl.appendChild(d);
+          });
+        }
+        if (subEl) {
+          subEl.hidden = !hasSub;
+          subEl.innerHTML = '';
+          if (hasSub) {
+            subs.forEach(function (im) {
+              var val = im.getAttribute('data-sub');
+              var b = document.createElement('button');
+              b.type = 'button';
+              b.textContent = val;
+              if (val === curSub) b.className = 'on';
+              b.setAttribute('aria-label', im.getAttribute('data-sublabel') || val);
+              b.addEventListener('click', function () { curSub = val; render(); });
+              subEl.appendChild(b);
+            });
+          }
+        }
+      }
+
+      function activate(i, step) {
+        steps.forEach(function (s) { s.classList.remove('active'); });
+        step.classList.add('active');
+        curSpace = i; curVar = 0; curSub = null;
+        render();
+        if (glow) { var g = step.style.getPropertyValue('--glow'); if (g) glow.style.background = 'radial-gradient(closest-side, ' + g + ', transparent 72%)'; }
+      }
+
+      function step(delta) {
+        var list = order[curSpace] || [];
+        if (list.length < 2) return;
+        curVar = (curVar + delta + list.length) % list.length;
+        render();
+      }
+      if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
+
+      // Swipe / drag on the phone to change views.
+      var sx = 0, sy = 0, tracking = false;
+      phone.addEventListener('pointerdown', function (e) { tracking = true; sx = e.clientX; sy = e.clientY; });
+      phone.addEventListener('pointerup', function (e) {
+        if (!tracking) return; tracking = false;
+        var dx = e.clientX - sx, dy = e.clientY - sy;
+        if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) { step(dx < 0 ? 1 : -1); }
+      });
+      phone.addEventListener('pointercancel', function () { tracking = false; });
+
+      activate(steps[0].getAttribute('data-i'), steps[0]);
+
+      // Pick the step whose center is nearest the viewport center.
+      // Phone image and text always stay in sync, and a screen only
+      // changes once that step truly owns the middle of the screen.
+      var current = steps[0];
+      var ticking = false;
+      var phoneCol = document.querySelector('.showPhoneCol');
+      function refLine() {
+        // Desktop: the true middle. Mobile: a line just below the sticky
+        // phone, so a space activates as its heading appears under the phone.
+        if (window.matchMedia('(max-width: 920px)').matches && phoneCol) {
+          var cb = phoneCol.getBoundingClientRect().bottom;
+          return cb + (window.innerHeight - cb) * 0.32;
+        }
+        return window.innerHeight / 2;
+      }
+      function syncScroll() {
+        ticking = false;
+        var mid = refLine();
+        var best = null, bestDist = Infinity;
+        steps.forEach(function (s) {
+          var r = s.getBoundingClientRect();
+          var dist = Math.abs((r.top + r.bottom) / 2 - mid);
+          if (dist < bestDist) { bestDist = dist; best = s; }
+        });
+        if (best && best !== current) { current = best; activate(best.getAttribute('data-i'), best); }
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(syncScroll); }
+      }, { passive: true });
+      window.addEventListener('resize', syncScroll, { passive: true });
+      syncScroll();
+    })();
+
+    // Animated Today timeline - play once when it scrolls into view.
+    document.body.classList.add('tlReady');
+    (function () {
+      var tl = document.querySelector('[data-tl]');
+      if (!tl) return;
+      if (!('IntersectionObserver' in window)) { tl.classList.add('tlPlay'); return; }
+      var tio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tlPlay'); tio.unobserve(e.target); } });
+      }, { threshold: 0.35 });
+      tio.observe(tl);
+    })();
+
+    // Today modules - toggle sections on/off (delightful demo of configurability)
+    document.querySelectorAll('.todayMods [data-toggle]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var row = btn.closest('.modRow');
+        row.classList.toggle('on');
+        row.classList.toggle('off');
+      });
+    });
+
+    // Today modules - real drag-reorder (locked timeline stays pinned on top).
+    (function () {
+      var list = document.querySelector('.todayMods');
+      if (!list) return;
+      var dragEl = null;
+      list.querySelectorAll('.modRow[data-mod]').forEach(function (row) {
+        row.setAttribute('draggable', 'true');
+        row.addEventListener('dragstart', function (e) {
+          dragEl = row;
+          e.dataTransfer.effectAllowed = 'move';
+          try { e.dataTransfer.setData('text/plain', 'row'); } catch (x) {}
+          requestAnimationFrame(function () { row.classList.add('dragging'); });
+        });
+        row.addEventListener('dragend', function () { row.classList.remove('dragging'); dragEl = null; });
+      });
+      function afterRow(y) {
+        var els = [].slice.call(list.querySelectorAll('.modRow[data-mod]:not(.dragging)'));
+        var closest = null, closestOffset = -Infinity;
+        els.forEach(function (el) {
+          var box = el.getBoundingClientRect();
+          var offset = y - box.top - box.height / 2;
+          if (offset < 0 && offset > closestOffset) { closestOffset = offset; closest = el; }
+        });
+        return closest;
+      }
+      list.addEventListener('dragover', function (e) {
+        if (!dragEl) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        var after = afterRow(e.clientY);
+        if (after) { list.insertBefore(dragEl, after); }
+        else { list.insertBefore(dragEl, list.querySelector('.cap')); }
+      });
+      list.addEventListener('drop', function (e) { if (dragEl) e.preventDefault(); });
+    })();
+
+    // Theme playground - background style, dark mode, accent. Persisted.
+    (function () {
+      var root = document.documentElement;
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+      var state = {
+        theme: localStorage.getItem('df-theme') || 'light',
+        bg: localStorage.getItem('df-bg') || 'sand',
+        accent: localStorage.getItem('df-accent') || 'sand'
+      };
+      function apply() {
+        root.dataset.theme = (state.theme === 'system') ? (mq.matches ? 'dark' : 'light') : state.theme;
+        root.dataset.bg = state.bg;
+        root.dataset.accent = state.accent;
+        document.querySelectorAll('.apSeg[data-ctl], .apSw[data-ctl]').forEach(function (grp) {
+          var key = grp.getAttribute('data-ctl');
+          grp.querySelectorAll('[data-val]').forEach(function (el) {
+            el.classList.toggle('on', el.getAttribute('data-val') === state[key]);
+          });
+        });
+      }
+      document.querySelectorAll('[data-ctl]').forEach(function (grp) {
+        var key = grp.getAttribute('data-ctl');
+        grp.querySelectorAll('[data-val]').forEach(function (el) {
+          if (el.tagName !== 'BUTTON') {
+            el.setAttribute('role', 'button');
+            el.tabIndex = 0;
+            el.addEventListener('keydown', function (ev) {
+              if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); el.click(); }
+            });
+          }
+          el.addEventListener('click', function () {
+            state[key] = el.getAttribute('data-val');
+            localStorage.setItem('df-' + key, state[key]);
+            apply();
+          });
+        });
+      });
+      mq.addEventListener && mq.addEventListener('change', function () { if (state.theme === 'system') apply(); });
+
+      document.querySelectorAll('[data-reset]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          state.theme = 'light'; state.bg = 'sand'; state.accent = 'sand';
+          ['theme', 'bg', 'accent'].forEach(function (k) { localStorage.removeItem('df-' + k); });
+          apply();
+        });
+      });
+
+      var fab = document.getElementById('apFab'), pop = document.getElementById('apPop');
+      if (fab && pop) {
+        fab.addEventListener('click', function (e) { e.stopPropagation(); pop.classList.toggle('open'); });
+        pop.addEventListener('click', function (e) { e.stopPropagation(); });
+        document.addEventListener('click', function () { pop.classList.remove('open'); });
+      }
+
+      apply();
+    })();
+
+    var els = document.querySelectorAll('.rv');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.16, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Routines show/hide demo toggle
+  (function () {
+    var sw = document.getElementById('routineSwitch');
+    var day = document.getElementById('routineDay');
+    if (!sw || !day) return;
+    sw.addEventListener('click', function () {
+      var on = sw.classList.toggle('on');
+      sw.setAttribute('aria-checked', on ? 'true' : 'false');
+      day.classList.toggle('hideRoutines', !on);
+    });
+  })();
+</script>
+</body>
+</html>

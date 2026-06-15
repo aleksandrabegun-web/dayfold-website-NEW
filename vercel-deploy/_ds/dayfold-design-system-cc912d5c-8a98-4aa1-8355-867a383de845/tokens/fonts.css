@@ -1,0 +1,18 @@
+/* ============================================================
+   Dayfold — Webfonts
+   ------------------------------------------------------------
+   NOTE: No original Dayfold font files were provided. These are
+   on-brand substitutes loaded from Google Fonts and FLAGGED for
+   review. If Dayfold has licensed typefaces, drop the woff2 files
+   in /assets/fonts and replace these @import lines with local
+   @font-face rules.
+
+     UI / body      → Hanken Grotesk  (warm humanist grotesque — matches
+                       the app's bold rounded sans)
+     Display / hero → Anton           (heavy condensed display, the web-
+                       quality stand-in for "Impact" the user asked for;
+                       marketing & brand moments ONLY, never in-app)
+     Numerals / time→ JetBrains Mono  (tabular metadata)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Anton&family=JetBrains+Mono:wght@400;500&display=swap');

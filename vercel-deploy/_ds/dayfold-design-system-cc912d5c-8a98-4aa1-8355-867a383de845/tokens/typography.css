@@ -1,0 +1,56 @@
+/* ============================================================
+   Dayfold — Typography
+   ------------------------------------------------------------
+   Two voices: a warm humanist sans for the interface and body
+   (the day-to-day), and a heavy condensed display reserved for
+   loud brand moments — marketing heroes, posters, deck covers.
+   Mono carries time, dates and numerals where alignment matters.
+   Scale is a gentle 1.26 ratio — readable, never shouty in-app.
+   ============================================================ */
+
+:root {
+  /* --- Families --------------------------------------------- */
+  --font-sans:    'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Anton', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* --- Size scale ------------------------------------------- */
+  --text-xs:   12px;
+  --text-sm:   13px;
+  --text-base: 15px;   /* default UI text */
+  --text-md:   16px;
+  --text-lg:   18px;
+  --text-xl:   21px;
+  --text-2xl:  25px;
+  --text-3xl:  31px;
+  --text-4xl:  39px;
+  --text-5xl:  49px;
+  --text-6xl:  62px;
+
+  /* --- Weights ---------------------------------------------- */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold:800;
+
+  /* --- Line height ------------------------------------------ */
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* --- Letter spacing --------------------------------------- */
+  --tracking-tight:  -0.02em;   /* large display */
+  --tracking-snug:   -0.01em;   /* headings */
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.09em;    /* small-caps labels / eyebrows */
+
+  /* --- Semantic roles --------------------------------------- */
+  --display-font:  var(--font-display);   /* hero / poster headlines */
+  --heading-font:  var(--font-sans);      /* in-app & section headings */
+  --body-font:     var(--font-sans);
+  --label-font:    var(--font-sans);
+  --numeral-font:  var(--font-mono);
+}

@@ -1,0 +1,12 @@
+{
+  "name": "dayfold-website",
+  "version": "1.0.0",
+  "description": "Dayfold - Time awareness, not productivity pressure",
+  "homepage": "https://dayfold.app",
+  "license": "MIT",
+  "author": "Dayfold",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/dayfold-website.git"
+  }
+}

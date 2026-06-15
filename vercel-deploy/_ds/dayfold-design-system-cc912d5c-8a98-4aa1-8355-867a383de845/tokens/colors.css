@@ -1,0 +1,121 @@
+/* ============================================================
+   Dayfold — Color
+   ------------------------------------------------------------
+   A warm, paper-grounded palette. Backgrounds read like soft
+   daylight on paper; ink is a warm brown-charcoal (never pure
+   black). The 10 accents are pulled directly from the app and
+   stay muted, earthy and calm — never neon, never saturated.
+   ============================================================ */
+
+:root {
+  /* --- Warm neutrals: "paper" surfaces ------------------- */
+  --paper-0:   #FFFFFF;   /* pure white, rare */
+  --paper-card:#FFFDFA;   /* card surface, faintly warm */
+  --paper-50:  #FBF7F1;   /* page background */
+  --paper-100: #F4EEE4;   /* sunken / inset */
+  --paper-150: #ECE5D8;   /* hover well */
+  --paper-200: #E3DACB;   /* strong fill */
+
+  /* --- Ink: warm brown-charcoal -------------------------- */
+  --ink-900:   #2A2420;   /* darkest — the "fold" brown (logo ground) */
+  --ink-800:   #332C26;
+  --ink-strong:#2D2823;   /* headings */
+  --ink:       #3D372F;   /* body text */
+  --ink-muted: #6F665B;   /* secondary text */
+  --ink-subtle:#968B7E;   /* placeholder / tertiary */
+  --ink-faint: #B6AC9E;   /* disabled */
+
+  /* --- Borders (warm, low-contrast) ---------------------- */
+  --line-subtle:  #EFE8DC;
+  --line:         #E3DACE;
+  --line-strong:  #D4C9B8;
+
+  /* --- The 10 brand accents (raw, from app screenshots) -- */
+  --clay:     #7E6656;   /* 1  Clay taupe   */
+  --rose:     #D08F83;   /* 2  Terra rose   */
+  --ochre:    #D3A26D;   /* 3  Burnt ochre  */
+  --sand:     #E3D0BA;   /* 4  Sandstone    */
+  --olive:    #B7BE9A;   /* 5  Olive earth  */
+  --sage:     #A3B3A2;   /* 6  Sage moss    */
+  --steel:    #A2B3C4;   /* 7  Dusty steel  */
+  --sky:      #C7D6E2;   /* 8  Sky mineral  */
+  --lavender: #C0B9C9;   /* 9  Muted lavender */
+  --stone:    #C6C2BE;   /* 10 Neutral gray */
+
+  /* --- Camel: the app's primary action / selection tan --- */
+  --camel:      #C2A079;   /* primary buttons, selected date, active tab */
+  --camel-soft: #EFE6D8;   /* selected pill background */
+  --camel-hover:#B58F66;
+  --camel-deep: #A07F58;   /* pressed / strong */
+
+  /* --- Accent soft tints (chip / wash backgrounds) ------- */
+  --clay-soft:     #EEE6DF;
+  --rose-soft:     #F6E8E3;
+  --ochre-soft:    #F5EAD9;
+  --sand-soft:     #F6EFE3;
+  --olive-soft:    #EEF1E6;
+  --sage-soft:     #E9EDE8;
+  --steel-soft:    #E6EBF0;
+  --sky-soft:      #EBF1F6;
+  --lavender-soft: #EFECF1;
+  --stone-soft:    #EFEDEA;
+
+  /* --- Accent deep variants (readable text on soft) ------ */
+  --clay-deep:     #5C4A3D;
+  --rose-deep:     #9D5E53;
+  --ochre-deep:    #976C3C;
+  --sand-deep:     #8A7355;
+  --olive-deep:    #6C7850;
+  --sage-deep:     #5D6C5C;
+  --steel-deep:    #586981;
+  --sky-deep:      #4D6A84;
+  --lavender-deep: #6D6480;
+  --stone-deep:    #6A655E;
+
+  /* ============================================================
+     Semantic aliases — reference these in components, not raws
+     ============================================================ */
+
+  /* Surfaces */
+  --surface-page:    var(--paper-50);
+  --surface-card:    var(--paper-card);
+  --surface-sunken:  var(--paper-100);
+  --surface-hover:   var(--paper-150);
+  --surface-inverse: var(--ink-900);
+
+  /* Text */
+  --text-primary:   var(--ink);
+  --text-heading:   var(--ink-strong);
+  --text-secondary: var(--ink-muted);
+  --text-muted:     var(--ink-subtle);
+  --text-disabled:  var(--ink-faint);
+  --text-on-brand:  #FBF7F1;
+  --text-on-inverse:#EDE4D6;
+
+  /* Borders */
+  --border-subtle:  var(--line-subtle);
+  --border-default: var(--line);
+  --border-strong:  var(--line-strong);
+
+  /* Brand */
+  --brand:        var(--camel);        /* primary action / selection (app) */
+  --brand-hover:  var(--camel-hover);
+  --brand-pressed:var(--camel-deep);
+  --brand-strong: var(--clay);         /* clay — links & strong text accents */
+  --brand-ink:    var(--ink-900);      /* the fold dark */
+  --brand-gold:   var(--ochre);        /* the fold highlight */
+  --focus-ring:   #B08A6E;             /* warm focus outline */
+
+  /* Status — kept muted & warm, never alarming */
+  --positive:      var(--olive-deep);
+  --positive-soft: var(--olive-soft);
+  --attention:     var(--ochre-deep);
+  --attention-soft:var(--ochre-soft);
+  --critical:      var(--rose-deep);
+  --critical-soft: var(--rose-soft);
+
+  /* Energy scale — a core Dayfold concept (low → high) */
+  --energy-low:    var(--sky);      /* quiet, restful */
+  --energy-steady: var(--sage);     /* even, sustainable */
+  --energy-high:   var(--ochre);    /* bright, charged */
+}
