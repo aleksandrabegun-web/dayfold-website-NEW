@@ -672,48 +672,41 @@
       if (!list) return;
       var dragEl = null;
       list.querySelectorAll('.modRow[data-mod]').forEach(function (row) {
-        row.setAttribute('draggable', 'true');
-        row.addEventListener('dragstart', function (e) {
-          window.getSelection && window.getSelection().removeAllRanges();
-          dragEl = row;
-          e.dataTransfer.effectAllowed = 'move';
-          try { e.dataTransfer.setData('text/plain', 'row'); } catch (x) {}
-          requestAnimationFrame(function () { row.classList.add('dragging'); });
-        });
-        row.addEventListener('dragend', function () { row.classList.remove('dragging'); dragEl = null; });
-        var touchDrag = null;
+        row.removeAttribute('draggable');
+        var drag = null;
         row.addEventListener('pointerdown', function (e) {
-          if (e.pointerType === 'mouse' || e.target.closest('[data-toggle]')) return;
-          touchDrag = { id: e.pointerId, x: e.clientX, y: e.clientY, active: false };
+          if (e.button && e.button !== 0) return;
+          if (e.target.closest('[data-toggle]')) return;
+          drag = { id: e.pointerId, x: e.clientX, y: e.clientY, active: false };
         });
         row.addEventListener('pointermove', function (e) {
-          if (!touchDrag || touchDrag.id !== e.pointerId) return;
-          var dx = e.clientX - touchDrag.x;
-          var dy = e.clientY - touchDrag.y;
-          if (!touchDrag.active && Math.hypot(dx, dy) > 8) {
-            touchDrag.active = true;
+          if (!drag || drag.id !== e.pointerId) return;
+          var dx = e.clientX - drag.x;
+          var dy = e.clientY - drag.y;
+          if (!drag.active && Math.hypot(dx, dy) > 6) {
+            drag.active = true;
             dragEl = row;
             window.getSelection && window.getSelection().removeAllRanges();
             try { row.setPointerCapture(e.pointerId); } catch (x) {}
             row.classList.add('dragging');
           }
-          if (touchDrag.active) {
+          if (drag.active) {
             e.preventDefault();
             placeDrag(e.clientY);
           }
         }, { passive: false });
-        function endTouchDrag(e) {
-          if (!touchDrag || touchDrag.id !== e.pointerId) return;
-          if (touchDrag.active) {
+        function endDrag(e) {
+          if (!drag || drag.id !== e.pointerId) return;
+          if (drag.active) {
             e.preventDefault();
             row.classList.remove('dragging');
             try { row.releasePointerCapture(e.pointerId); } catch (x) {}
           }
-          touchDrag = null;
+          drag = null;
           dragEl = null;
         }
-        row.addEventListener('pointerup', endTouchDrag);
-        row.addEventListener('pointercancel', endTouchDrag);
+        row.addEventListener('pointerup', endDrag);
+        row.addEventListener('pointercancel', endDrag);
       });
       function afterRow(y) {
         var els = [].slice.call(list.querySelectorAll('.modRow[data-mod]:not(.dragging)'));
@@ -731,13 +724,6 @@
         if (after) { list.insertBefore(dragEl, after); }
         else { list.insertBefore(dragEl, list.querySelector('.cap')); }
       }
-      list.addEventListener('dragover', function (e) {
-        if (!dragEl) return;
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-        placeDrag(e.clientY);
-      });
-      list.addEventListener('drop', function (e) { if (dragEl) e.preventDefault(); });
     })();
 
     // Theme playground - background style, dark mode, accent. Persisted.
