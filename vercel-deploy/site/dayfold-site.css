@@ -237,65 +237,36 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
   .showWrap { display: block; }
   .showPhoneCol { display: none; }
   .showSteps {
-    display: grid;
-    gap: clamp(34px, 10vw, 58px);
-    padding: 0 0 8px;
-  }
-  .spaceStep,
-  .spaceStep:first-child,
-  .spaceStep:last-child {
-    min-height: auto;
-    opacity: 1;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    min-width: 0;
-    overflow: hidden;
-    padding: 6px 0 clamp(26px, 8vw, 44px);
-  }
-  .stepNum { order: 1; margin-top: 0; }
-  .stepEyebrow { order: 2; justify-content: center; margin: 12px 0 14px; }
-  .spaceStep h3 { order: 3; font-size: clamp(32px, 9vw, 42px); margin-bottom: 14px; }
-  .desktopStepText,
-  .spaceStep > .mobileShotMeta,
-  .mobileStepText,
-  .modeHint { display: none; }
-  .stepShot.mobileShotCarousel {
-    order: 4;
-    display: block;
-    width: 100vw;
-    max-width: none;
-    margin: 0 calc(50% - 50vw);
-    padding: 0;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    overflow: hidden;
-  }
-  .mobileShotTrack {
     display: flex;
-    gap: 16px;
-    margin: 0;
-    padding: 0 clamp(22px, 6vw, 96px) 4px;
+    gap: 18px;
+    margin: 0 calc(clamp(22px, 6vw, 96px) * -1);
+    padding: 2px clamp(22px, 6vw, 96px) 16px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: clamp(22px, 6vw, 96px);
     -webkit-overflow-scrolling: touch;
   }
-  .mobileShotTrack::-webkit-scrollbar { display: none; }
-  .mobileShotSlide {
-    flex: 0 0 min(70vw, 270px);
+  .showSteps::-webkit-scrollbar { display: none; }
+  .spaceStep,
+  .spaceStep:first-child,
+  .spaceStep:last-child {
+    flex: 0 0 min(84vw, 360px);
+    min-height: auto;
+    opacity: 1;
     scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    margin: 0;
+    text-align: center;
+    padding: 0 0 10px;
   }
-  .mobilePhoneFrame {
+  .stepNum { order: 1; margin-top: 0; }
+  .stepEyebrow { order: 2; justify-content: center; margin: 12px 0 14px; }
+  .spaceStep h3 { order: 3; font-size: clamp(32px, 9vw, 42px); margin-bottom: 14px; }
+  .stepShot {
+    order: 4;
     display: block;
-    width: min(44vw, 172px);
+    width: min(49vw, 190px);
     margin: 0 auto 10px;
     padding: 8px;
     border-radius: 38px;
@@ -303,21 +274,33 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
     border: 1px solid rgba(255,255,255,.9);
     box-shadow: var(--soft-shadow);
   }
-  .mobilePhoneFrame img { display: block; width: 100%; border-radius: 30px; }
-  .mobileShotSlide .mobileShotMeta {
+  .stepShot img { display: block; width: 100%; border-radius: 30px; }
+  .mobileShotMeta {
+    order: 5;
     display: flex;
-    min-height: 86px;
+    min-height: 48px;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    gap: 7px;
-    margin: 0 auto;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto 12px;
   }
   .mobileStepDots { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 14px; }
   .mobileStepDots i { width: 6px; height: 6px; border-radius: 50%; background: var(--paper-200); opacity: .9; }
   .mobileStepDots i.on { width: 7px; height: 7px; background: var(--sc, var(--camel)); transform: scale(1.2); }
   .mobileShotCaption { font-family: var(--font-mono); font-size: 11.5px; line-height: 1.3; letter-spacing: .035em; color: var(--text-secondary); max-width: 25ch; text-wrap: balance; }
-  .mobileSlideText { display: block; max-width: 28ch; font-size: 15px; line-height: 1.48; color: var(--soft-ink); text-wrap: balance; }
+  .desktopStepText { display: none; }
+  .mobileStepText {
+    order: 6;
+    display: block;
+    max-width: 30ch;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--soft-ink);
+    text-wrap: balance;
+  }
+  .modeHint { display: none; }
 }
 
 /* ---------- supporting spaces: icons (legacy) ---------- */
