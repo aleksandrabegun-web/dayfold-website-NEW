@@ -379,6 +379,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .modRow[data-mod] .modGrip { cursor: grab; }
 .modRow.dragging { opacity: .92; background: var(--surface-card); box-shadow: 0 16px 34px -14px rgba(42,36,32,.42); transform: scale(1.015); cursor: grabbing; }
 .modRow.dragging .modGrip { cursor: grabbing; }
+body.isReorderingToday, body.isReorderingToday * { cursor: grabbing !important; -webkit-user-select: none !important; user-select: none !important; }
 .todayMods .cap { margin: 16px 4px 0; font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); }
 
 /* ---------- screens grid ---------- */

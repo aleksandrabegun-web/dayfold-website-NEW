@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/fonts.css">
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/colors.css">
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/typography.css">
-<link rel="stylesheet" href="site/dayfold-site.css?v=spaces-phone-7">
+<link rel="stylesheet" href="site/dayfold-site.css?v=spaces-phone-8">
 </head>
 <body>
 
@@ -670,44 +670,50 @@
     (function () {
       var list = document.querySelector('.todayMods');
       if (!list) return;
-      var dragEl = null;
+      var drag = null;
       list.querySelectorAll('.modRow[data-mod]').forEach(function (row) {
         row.removeAttribute('draggable');
-        var drag = null;
         row.addEventListener('pointerdown', function (e) {
           if (e.button && e.button !== 0) return;
           if (e.target.closest('[data-toggle]')) return;
-          drag = { id: e.pointerId, x: e.clientX, y: e.clientY, active: false };
+          e.preventDefault();
+          cleanupDrag();
+          drag = { row: row, id: e.pointerId, x: e.clientX, y: e.clientY, active: false };
+          window.getSelection && window.getSelection().removeAllRanges();
+          document.addEventListener('pointermove', onPointerMove, { passive: false });
+          document.addEventListener('pointerup', onPointerEnd, { passive: false });
+          document.addEventListener('pointercancel', onPointerEnd, { passive: false });
         });
-        row.addEventListener('pointermove', function (e) {
-          if (!drag || drag.id !== e.pointerId) return;
-          var dx = e.clientX - drag.x;
-          var dy = e.clientY - drag.y;
-          if (!drag.active && Math.hypot(dx, dy) > 6) {
-            drag.active = true;
-            dragEl = row;
-            window.getSelection && window.getSelection().removeAllRanges();
-            try { row.setPointerCapture(e.pointerId); } catch (x) {}
-            row.classList.add('dragging');
-          }
-          if (drag.active) {
-            e.preventDefault();
-            placeDrag(e.clientY);
-          }
-        }, { passive: false });
-        function endDrag(e) {
-          if (!drag || drag.id !== e.pointerId) return;
-          if (drag.active) {
-            e.preventDefault();
-            row.classList.remove('dragging');
-            try { row.releasePointerCapture(e.pointerId); } catch (x) {}
-          }
-          drag = null;
-          dragEl = null;
-        }
-        row.addEventListener('pointerup', endDrag);
-        row.addEventListener('pointercancel', endDrag);
       });
+      function cleanupDrag() {
+        list.querySelectorAll('.modRow.dragging').forEach(function (row) { row.classList.remove('dragging'); });
+        document.removeEventListener('pointermove', onPointerMove);
+        document.removeEventListener('pointerup', onPointerEnd);
+        document.removeEventListener('pointercancel', onPointerEnd);
+        document.body.classList.remove('isReorderingToday');
+      }
+      function onPointerMove(e) {
+        if (!drag || drag.id !== e.pointerId) return;
+        var dx = e.clientX - drag.x;
+        var dy = e.clientY - drag.y;
+        if (!drag.active && Math.hypot(dx, dy) > 6) {
+          drag.active = true;
+          drag.row.classList.add('dragging');
+          document.body.classList.add('isReorderingToday');
+          window.getSelection && window.getSelection().removeAllRanges();
+        }
+        if (drag.active) {
+          e.preventDefault();
+          window.getSelection && window.getSelection().removeAllRanges();
+          placeDrag(e.clientY);
+        }
+      }
+      function onPointerEnd(e) {
+        if (!drag || drag.id !== e.pointerId) return;
+        if (drag.active) e.preventDefault();
+        cleanupDrag();
+        drag = null;
+      }
       function afterRow(y) {
         var els = [].slice.call(list.querySelectorAll('.modRow[data-mod]:not(.dragging)'));
         var closest = null, closestOffset = -Infinity;
@@ -719,10 +725,10 @@
         return closest;
       }
       function placeDrag(y) {
-        if (!dragEl) return;
+        if (!drag) return;
         var after = afterRow(y);
-        if (after) { list.insertBefore(dragEl, after); }
-        else { list.insertBefore(dragEl, list.querySelector('.cap')); }
+        if (after) { list.insertBefore(drag.row, after); }
+        else { list.insertBefore(drag.row, list.querySelector('.cap')); }
       }
     })();
 
