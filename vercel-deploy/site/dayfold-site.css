@@ -154,26 +154,26 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .routineBand { margin: 0 clamp(22px, 6vw, 96px) clamp(88px, 11vw, 136px); padding: clamp(30px, 5vw, 58px); border-radius: calc(var(--radius) + 10px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .92fr); gap: clamp(28px, 5vw, 60px); align-items: center; background: var(--surface-sunken); border: 1px solid var(--border-subtle); box-shadow: var(--soft-shadow); }
 .routineCopy h2 { margin-bottom: 14px; }
 .routineCopy p.sectionLead + p.sectionLead { margin-top: 14px; }
-.routineDemo { background: none; border: none; border-radius: 0; padding: 0; box-shadow: none; }
+.routineDemo { display: flex; flex-direction: column; align-items: center; background: none; border: none; border-radius: 0; padding: 0; box-shadow: none; }
 .routineDayHead { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 0 auto 14px; width: min(340px, 100%); padding: 0 4px; }
 .routineTitle { display: inline-flex; align-items: baseline; gap: .35em; min-width: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.3; letter-spacing: .03em; color: var(--muted); }
 .routineTitleCall { white-space: nowrap; }
 .routineSwitch { display: inline-flex; align-items: center; gap: 10px; flex: none; cursor: pointer; background: none; border: none; padding: 0; font: inherit; color: var(--muted); }
 .rsLabel { font-size: 13px; line-height: 1.16; font-weight: 700; text-align: right; }
-.rsTrack { width: 46px; height: 28px; flex: 0 0 46px; border-radius: 999px; background: color-mix(in srgb, var(--paper-100) 82%, #fff 18%); position: relative; border: 1px solid color-mix(in srgb, var(--paper-200) 80%, #fff 20%); box-shadow: inset 0 1px 2px rgba(42,36,32,.035); transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease; }
+.rsTrack { --switch-fill: color-mix(in srgb, var(--paper-100) 82%, #fff 18%); width: 46px; height: 28px; flex: 0 0 46px; border-radius: 999px; background: var(--switch-fill); position: relative; border: 1px solid var(--switch-fill); box-shadow: inset 0 1px 2px rgba(42,36,32,.035); transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease; }
 .rsKnob { position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(42,36,32,.18); transform: translateX(0); transition: transform .22s cubic-bezier(.22,.61,.21,1); }
-.routineSwitch.on .rsTrack { background: var(--camel); border-color: color-mix(in srgb, var(--camel) 88%, #fff 12%); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--camel) 72%, #fff 28%); }
+.routineSwitch.on .rsTrack { --switch-fill: var(--camel); background: var(--switch-fill); border-color: var(--switch-fill); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--camel) 72%, #fff 28%); }
 .routineSwitch.on .rsKnob { transform: translateX(18px); }
 .routineDay { display: flex; flex-direction: column; }
 .routinePhone { position: relative; width: min(340px, 100%); margin: 0 auto; overflow: hidden; border-radius: 16px; border: 1px solid var(--border-subtle); box-shadow: var(--soft-shadow); background: #fff; padding: 7px 7px 14px; }
 .rViewport { position: relative; aspect-ratio: 1206 / 1350; overflow: hidden; border-radius: 10px; }
-.rShot { position: absolute; top: 0; left: 0; width: 100%; height: auto; transform: translateY(-27.5%); transition: opacity .42s cubic-bezier(.22,.61,.21,1); }
+.rShot { position: absolute; top: 0; left: 0; width: 100%; height: auto; transform: translateY(-24.5%); transition: opacity .42s cubic-bezier(.22,.61,.21,1); }
 .rShot.rOff { opacity: 0; }
 .routinePhone.hideRoutines .rOff { opacity: 1; }
 .routinePhone.hideRoutines .rOn { opacity: 0; }
 @media (max-width: 920px) { .routineBand { grid-template-columns: 1fr; } }
 @media (max-width: 560px) {
-  .routineDayHead { width: min(340px, calc(100vw - 76px)); align-items: center; gap: 12px; padding: 0 2px; }
+  .routineDayHead { width: min(340px, 100%); align-items: center; gap: 12px; padding: 0 4px; }
   .routineTitle { flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.25; }
   .routineSwitch { gap: 9px; }
   .rsLabel { max-width: 74px; }
@@ -362,9 +362,9 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .modText { flex: 1; min-width: 0; }
 .modText b { display: block; font-size: 15.5px; font-weight: 700; letter-spacing: -.01em; color: var(--ink-strong); }
 .modText span { font-size: 12.5px; color: var(--text-muted); }
-.modToggle { flex: none; width: 46px; height: 28px; border-radius: 999px; background: color-mix(in srgb, var(--paper-100) 82%, #fff 18%); position: relative; cursor: pointer; border: 1px solid color-mix(in srgb, var(--paper-200) 80%, #fff 20%); padding: 0; box-shadow: inset 0 1px 2px rgba(42,36,32,.035); transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease; }
+.modToggle { --switch-fill: color-mix(in srgb, var(--paper-100) 82%, #fff 18%); flex: none; width: 46px; height: 28px; border-radius: 999px; background: var(--switch-fill); position: relative; cursor: pointer; border: 1px solid var(--switch-fill); padding: 0; box-shadow: inset 0 1px 2px rgba(42,36,32,.035); transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease; }
 .modToggle::after { content: ""; position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.18); transition: transform .22s cubic-bezier(.34,1.56,.64,1); }
-.modRow.on .modToggle { background: var(--camel); border-color: color-mix(in srgb, var(--camel) 88%, #fff 12%); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--camel) 72%, #fff 28%); }
+.modRow.on .modToggle { --switch-fill: var(--camel); background: var(--switch-fill); border-color: var(--switch-fill); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--camel) 72%, #fff 28%); }
 .modRow.on .modToggle::after { transform: translateX(18px); }
 .modLock { flex: none; font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); padding: 5px 10px; border-radius: 999px; background: var(--paper-100); }
 .modRow.locked .modGrip { opacity: .5; cursor: default; color: var(--text-muted); }
