@@ -489,7 +489,7 @@
     // Showcase: scroll picks the centered space; within a space you can
     // swipe / tap arrows / tap dots to browse its different views (modes).
     (function () {
-      var steps = document.querySelectorAll('.spaceStep');
+      var steps = Array.prototype.slice.call(document.querySelectorAll('.spaceStep'));
       var phone = document.querySelector('.showPhone[data-gallery]');
       var glow = document.querySelector('.showPhoneGlow');
       if (!steps.length || !phone) return;
@@ -649,17 +649,32 @@
       var current = steps[0];
       var ticking = false;
       var phoneCol = document.querySelector('.showPhoneCol');
+      var showWrapEl = document.querySelector('.showWrap');
+      var mobileScroller = {
+        touching: false,
+        changed: false,
+        startIndex: 0,
+        lockUntil: 0,
+        resetTimer: null
+      };
+      function isMobileShowcase() { return window.matchMedia('(max-width: 920px)').matches; }
+      function stepIndex(stepEl) { return Math.max(0, steps.indexOf(stepEl)); }
+      function scrollStepIntoMobileView(stepEl) {
+        if (!stepEl || !isMobileShowcase()) return;
+        var top = stepEl.getBoundingClientRect().top + window.scrollY;
+        var offset = Math.min(460, window.innerHeight * 0.55);
+        window.scrollTo({ top: Math.max(0, top - offset), behavior: 'smooth' });
+      }
       function refLine() {
         // Desktop: the true middle. Mobile: a line just below the sticky
         // phone, so a space activates as its heading appears under the phone.
-        if (window.matchMedia('(max-width: 920px)').matches && phoneCol) {
+        if (isMobileShowcase() && phoneCol) {
           var cb = phoneCol.getBoundingClientRect().bottom;
           return cb + (window.innerHeight - cb) * 0.32;
         }
         return window.innerHeight / 2;
       }
-      function syncScroll() {
-        ticking = false;
+      function bestStepAtRef() {
         var mid = refLine();
         var best = null, bestDist = Infinity;
         steps.forEach(function (s) {
@@ -667,12 +682,92 @@
           var dist = Math.abs((r.top + r.bottom) / 2 - mid);
           if (dist < bestDist) { bestDist = dist; best = s; }
         });
-        if (best && best !== current) { current = best; activate(best.getAttribute('data-i'), best); }
+        return best;
+      }
+      function clampToOneFromIndex(stepEl, baseIndex) {
+        if (!stepEl) return stepEl;
+        var bestIndex = stepIndex(stepEl);
+        var maxDown = Math.min(steps.length - 1, baseIndex + 1);
+        var maxUp = Math.max(0, baseIndex - 1);
+        return steps[Math.max(maxUp, Math.min(maxDown, bestIndex))];
+      }
+      function clampToOneFromStart(stepEl) {
+        return clampToOneFromIndex(stepEl, mobileScroller.startIndex);
+      }
+      var scrollSettleTimer = null;
+      function queueSettledSync(delay) {
+        clearTimeout(scrollSettleTimer);
+        scrollSettleTimer = setTimeout(syncScroll, delay || 180);
+      }
+      function syncScroll() {
+        ticking = false;
+        var mobile = isMobileShowcase();
+        if (mobile && Date.now() < mobileScroller.lockUntil) {
+          queueSettledSync(Math.max(40, mobileScroller.lockUntil - Date.now() + 40));
+          return;
+        }
+        var best = bestStepAtRef();
+        if (!best || best === current) return;
+        if (mobile) {
+          if (mobileScroller.touching) {
+            if (mobileScroller.changed) return;
+            best = clampToOneFromStart(best);
+            if (!best || best === current) return;
+            mobileScroller.changed = true;
+          } else {
+            best = clampToOneFromIndex(best, stepIndex(current));
+            if (!best || best === current) return;
+          }
+        }
+        current = best;
+        activate(best.getAttribute('data-i'), best);
+        if (mobile) {
+          mobileScroller.lockUntil = Date.now() + 900;
+          scrollStepIntoMobileView(current);
+        }
+      }
+      if (showWrapEl) {
+        showWrapEl.addEventListener('touchstart', function () {
+          if (!isMobileShowcase()) return;
+          clearTimeout(mobileScroller.resetTimer);
+          mobileScroller.touching = true;
+          mobileScroller.changed = false;
+          mobileScroller.startIndex = stepIndex(current);
+          mobileScroller.lockUntil = 0;
+          mobileScroller.resetTimer = setTimeout(function () {
+            if (!mobileScroller.touching) return;
+            mobileScroller.touching = false;
+            if (mobileScroller.changed) mobileScroller.lockUntil = Date.now() + 900;
+            syncScroll();
+          }, 1100);
+        }, { passive: true });
+        showWrapEl.addEventListener('touchend', function () {
+          if (!isMobileShowcase()) return;
+          clearTimeout(mobileScroller.resetTimer);
+          mobileScroller.touching = false;
+          var best = clampToOneFromStart(bestStepAtRef());
+          if (best && best !== current) {
+            current = best;
+            activate(best.getAttribute('data-i'), best);
+            mobileScroller.changed = true;
+          }
+          if (mobileScroller.changed) {
+            mobileScroller.lockUntil = Date.now() + 1200;
+            scrollStepIntoMobileView(current);
+          }
+        }, { passive: true });
+        showWrapEl.addEventListener('touchcancel', function () {
+          clearTimeout(mobileScroller.resetTimer);
+          mobileScroller.touching = false;
+          if (mobileScroller.changed) mobileScroller.lockUntil = Date.now() + 900;
+        }, { passive: true });
       }
       window.addEventListener('scroll', function () {
         if (!ticking) { ticking = true; requestAnimationFrame(syncScroll); }
+        if (isMobileShowcase()) queueSettledSync(220);
       }, { passive: true });
       window.addEventListener('resize', syncScroll, { passive: true });
+      setInterval(function () { if (isMobileShowcase()) syncScroll(); }, 260);
       syncScroll();
     })();
 
