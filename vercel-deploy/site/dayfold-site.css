@@ -277,7 +277,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 }
 
 /* ---------- product pair + mini timeline ---------- */
-.productPair { display: grid; grid-template-columns: minmax(300px, .95fr) minmax(0, 1.05fr); gap: clamp(18px, 4vw, 54px); align-items: stretch; }
+.productPair { display: grid; grid-template-columns: minmax(300px, .95fr) minmax(0, 1.05fr); gap: clamp(18px, 4vw, 54px); align-items: center; }
 .miniTimeline { padding: clamp(24px, 4vw, 38px); overflow: hidden; }
 .appTimelineRow { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 18px; align-items: start; }
 .appTimelineRow time { font-family: var(--font-mono); color: var(--ink-muted); font-size: 14px; font-weight: 500; white-space: nowrap; letter-spacing: -.02em; }
@@ -351,7 +351,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 }
 
 /* ---------- Today modules (Built around the whole day) ---------- */
-.todayMods { border-radius: var(--radius); background: var(--surface-card); border: 1px solid var(--border-subtle); box-shadow: var(--soft-shadow); padding: clamp(22px,3.5vw,30px); align-self: start; }
+.todayMods { border-radius: var(--radius); background: var(--surface-card); border: 1px solid var(--border-subtle); box-shadow: var(--soft-shadow); padding: clamp(22px,3.5vw,30px); align-self: center; }
 .todayMods, .todayMods * { -webkit-tap-highlight-color: transparent; }
 .todayMods > .h { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 16px; }
 .modRow { display: flex; align-items: center; gap: 13px; padding: 13px 14px; border-radius: 16px; background: var(--surface-sunken); transition: opacity .25s ease, background-color .4s ease, box-shadow .2s ease, transform .2s ease; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: manipulation; }
