@@ -1,10 +1,10 @@
 /* ============================================================
-   Dayfold — Color
+   Dayfold - Color
    ------------------------------------------------------------
    A warm, paper-grounded palette. Backgrounds read like soft
    daylight on paper; ink is a warm brown-charcoal (never pure
    black). The 10 accents are pulled directly from the app and
-   stay muted, earthy and calm — never neon, never saturated.
+   stay muted, earthy and calm - never neon, never saturated.
    ============================================================ */
 
 :root {
@@ -17,7 +17,7 @@
   --paper-200: #E3DACB;   /* strong fill */
 
   /* --- Ink: warm brown-charcoal -------------------------- */
-  --ink-900:   #2A2420;   /* darkest — the "fold" brown (logo ground) */
+  --ink-900:   #2A2420;   /* darkest - the "fold" brown (logo ground) */
   --ink-800:   #332C26;
   --ink-strong:#2D2823;   /* headings */
   --ink:       #3D372F;   /* body text */
@@ -73,7 +73,7 @@
   --stone-deep:    #6A655E;
 
   /* ============================================================
-     Semantic aliases — reference these in components, not raws
+     Semantic aliases - reference these in components, not raws
      ============================================================ */
 
   /* Surfaces */
@@ -101,12 +101,12 @@
   --brand:        var(--camel);        /* primary action / selection (app) */
   --brand-hover:  var(--camel-hover);
   --brand-pressed:var(--camel-deep);
-  --brand-strong: var(--clay);         /* clay — links & strong text accents */
+  --brand-strong: var(--clay);         /* clay - links & strong text accents */
   --brand-ink:    var(--ink-900);      /* the fold dark */
   --brand-gold:   var(--ochre);        /* the fold highlight */
   --focus-ring:   #B08A6E;             /* warm focus outline */
 
-  /* Status — kept muted & warm, never alarming */
+  /* Status - kept muted & warm, never alarming */
   --positive:      var(--olive-deep);
   --positive-soft: var(--olive-soft);
   --attention:     var(--ochre-deep);
@@ -114,7 +114,7 @@
   --critical:      var(--rose-deep);
   --critical-soft: var(--rose-soft);
 
-  /* Energy scale — a core Dayfold concept (low → high) */
+  /* Energy scale - a core Dayfold concept (low → high) */
   --energy-low:    var(--sky);      /* quiet, restful */
   --energy-steady: var(--sage);     /* even, sustainable */
   --energy-high:   var(--ochre);    /* bright, charged */

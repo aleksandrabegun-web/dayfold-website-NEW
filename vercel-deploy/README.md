@@ -1,6 +1,6 @@
 # Dayfold Website
 
-A calm, beautiful website for Dayfold — time awareness, not productivity pressure.
+A calm, beautiful website for Dayfold - time awareness, not productivity pressure.
 
 🌐 **Live:** [dayfold.app](https://dayfold.app)
 
@@ -65,9 +65,9 @@ open index.html
 
 ## Technologies
 
-- **HTML5** — Semantic markup
-- **CSS3** — Modern styling with CSS variables
-- **Design System** — Dayfold design tokens and typography
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling with CSS variables
+- **Design System** - Dayfold design tokens and typography
 
 ## Design System
 

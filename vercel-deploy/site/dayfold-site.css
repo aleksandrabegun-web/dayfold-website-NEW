@@ -1,5 +1,5 @@
 /* ============================================================
-   Dayfold — site, refonted on the design system
+   Dayfold - site, refonted on the design system
    Faithful recreation of the live dayfold.app layout. Only the
    TYPE has changed: Hanken Grotesk for text, JetBrains Mono for
    time + numerals, and the palette nudged onto DS tokens.
@@ -510,7 +510,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .closing h2 br { display: block; }
 
 /* ============================================================
-   THEME PLAYGROUND — background styles, dark mode, 10 accents
+   THEME PLAYGROUND - background styles, dark mode, 10 accents
    Variables live on <html>; everything downstream references
    --paper-* / --camel* / --ink* so a single swap re-skins all.
    ============================================================ */
@@ -558,7 +558,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 [data-theme="dark"] .phoneShot, [data-theme="dark"] .showPhone { background: #3A322B; border-color: rgba(255,255,255,.09); }
 [data-theme="dark"] .routinePhone { background: #3A322B; border-color: rgba(255,255,255,.09); }
 
-/* 10 accents — EXACT app palette (sampled from app screenshots), app order.
+/* 10 accents - EXACT app palette (sampled from app screenshots), app order.
    Only the brand/accent family swaps; categorical colors stay. */
 [data-accent="clay"]     { --camel:#866C5F; --camel-soft:#E4DCD6; --camel-deep:#6B5549; --camel-hover:#73594C; }
 [data-accent="rose"]     { --camel:#C07A6E; --camel-soft:#F0DDD8; --camel-deep:#9E5C50; --camel-hover:#A9655A; }
