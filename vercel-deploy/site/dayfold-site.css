@@ -218,7 +218,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .galTop { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 29px; }
 .galName { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .04em; color: var(--text-secondary); }
 .galSub { display: inline-flex; min-width: 74px; min-height: 29px; gap: 3px; padding: 3px; border-radius: 999px; background: var(--surface-sunken); border: 1px solid var(--border-subtle); }
-.galSub[hidden] { display: inline-flex; visibility: hidden; pointer-events: none; }
+.galSub[hidden] { display: none; }
 .galSub button { appearance: none; border: none; cursor: pointer; min-width: 26px; height: 22px; padding: 0 8px; border-radius: 999px; background: transparent; color: var(--muted); font-family: var(--font-mono); font-size: 12px; font-weight: 600; line-height: 1; transition: background-color .18s ease, color .18s ease; }
 .galSub button.on { background: var(--paper-50); color: var(--ink-strong); box-shadow: 0 1px 2px rgba(42,36,32,.10); }
 .galDots { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 17px; }
