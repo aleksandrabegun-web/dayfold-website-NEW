@@ -226,7 +226,7 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 
 @media (max-width: 920px) {
   .showWrap { grid-template-columns: 1fr; gap: 0; }
-  .showPhoneCol { position: sticky; top: 0; height: auto; padding: 14px 0 16px; z-index: 6; background: var(--paper-50); box-shadow: 0 16px 18px -8px var(--paper-50); }
+  .showPhoneCol { position: sticky; top: 0; height: auto; padding: 14px 0 16px; z-index: 6; background: transparent; box-shadow: none; }
   .showPhone { width: min(60vw, 250px); }
   .galArrow.prev { left: -34px; }
   .galArrow.next { right: -34px; }
