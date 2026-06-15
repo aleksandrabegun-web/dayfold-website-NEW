@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/fonts.css">
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/colors.css">
 <link rel="stylesheet" href="_ds/dayfold-design-system-cc912d5c-8a98-4aa1-8355-867a383de845/tokens/typography.css">
-<link rel="stylesheet" href="site/dayfold-site.css?v=spaces-phone-3">
+<link rel="stylesheet" href="site/dayfold-site.css?v=spaces-phone-4">
 </head>
 <body>
 
@@ -672,17 +672,54 @@
       if (!list) return;
       var dragEl = null;
       list.querySelectorAll('.modRow[data-mod]').forEach(function (row) {
+        var locked = !!row.querySelector('.modLock');
+        row.classList.toggle('locked', locked);
+        if (locked) return;
         row.setAttribute('draggable', 'true');
         row.addEventListener('dragstart', function (e) {
+          window.getSelection && window.getSelection().removeAllRanges();
           dragEl = row;
           e.dataTransfer.effectAllowed = 'move';
           try { e.dataTransfer.setData('text/plain', 'row'); } catch (x) {}
           requestAnimationFrame(function () { row.classList.add('dragging'); });
         });
         row.addEventListener('dragend', function () { row.classList.remove('dragging'); dragEl = null; });
+        var touchDrag = null;
+        row.addEventListener('pointerdown', function (e) {
+          if (e.pointerType === 'mouse' || e.target.closest('[data-toggle]')) return;
+          touchDrag = { id: e.pointerId, x: e.clientX, y: e.clientY, active: false };
+        });
+        row.addEventListener('pointermove', function (e) {
+          if (!touchDrag || touchDrag.id !== e.pointerId) return;
+          var dx = e.clientX - touchDrag.x;
+          var dy = e.clientY - touchDrag.y;
+          if (!touchDrag.active && Math.hypot(dx, dy) > 8) {
+            touchDrag.active = true;
+            dragEl = row;
+            window.getSelection && window.getSelection().removeAllRanges();
+            try { row.setPointerCapture(e.pointerId); } catch (x) {}
+            row.classList.add('dragging');
+          }
+          if (touchDrag.active) {
+            e.preventDefault();
+            placeDrag(e.clientY);
+          }
+        }, { passive: false });
+        function endTouchDrag(e) {
+          if (!touchDrag || touchDrag.id !== e.pointerId) return;
+          if (touchDrag.active) {
+            e.preventDefault();
+            row.classList.remove('dragging');
+            try { row.releasePointerCapture(e.pointerId); } catch (x) {}
+          }
+          touchDrag = null;
+          dragEl = null;
+        }
+        row.addEventListener('pointerup', endTouchDrag);
+        row.addEventListener('pointercancel', endTouchDrag);
       });
       function afterRow(y) {
-        var els = [].slice.call(list.querySelectorAll('.modRow[data-mod]:not(.dragging)'));
+        var els = [].slice.call(list.querySelectorAll('.modRow[data-mod]:not(.dragging):not(.locked)'));
         var closest = null, closestOffset = -Infinity;
         els.forEach(function (el) {
           var box = el.getBoundingClientRect();
@@ -691,13 +728,17 @@
         });
         return closest;
       }
+      function placeDrag(y) {
+        if (!dragEl) return;
+        var after = afterRow(y);
+        if (after) { list.insertBefore(dragEl, after); }
+        else { list.insertBefore(dragEl, list.querySelector('.cap')); }
+      }
       list.addEventListener('dragover', function (e) {
         if (!dragEl) return;
         e.preventDefault();
         e.dataTransfer.dropEffect = 'move';
-        var after = afterRow(e.clientY);
-        if (after) { list.insertBefore(dragEl, after); }
-        else { list.insertBefore(dragEl, list.querySelector('.cap')); }
+        placeDrag(e.clientY);
       });
       list.addEventListener('drop', function (e) { if (dragEl) e.preventDefault(); });
     })();

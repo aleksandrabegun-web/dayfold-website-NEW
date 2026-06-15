@@ -352,8 +352,9 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 
 /* ---------- Today modules (Built around the whole day) ---------- */
 .todayMods { border-radius: var(--radius); background: var(--surface-card); border: 1px solid var(--border-subtle); box-shadow: var(--soft-shadow); padding: clamp(22px,3.5vw,30px); align-self: start; }
+.todayMods, .todayMods * { -webkit-tap-highlight-color: transparent; }
 .todayMods > .h { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 16px; }
-.modRow { display: flex; align-items: center; gap: 13px; padding: 13px 14px; border-radius: 16px; background: var(--surface-sunken); transition: opacity .25s ease, background-color .4s ease, box-shadow .2s ease, transform .2s ease; }
+.modRow { display: flex; align-items: center; gap: 13px; padding: 13px 14px; border-radius: 16px; background: var(--surface-sunken); transition: opacity .25s ease, background-color .4s ease, box-shadow .2s ease, transform .2s ease; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: manipulation; }
 .modRow + .modRow { margin-top: 8px; }
 .modRow.off { opacity: .45; }
 .modGrip { display: flex; color: var(--ink-faint); cursor: grab; }
@@ -373,6 +374,8 @@ h3 { font-size: 23px; line-height: 1.12; letter-spacing: -.025em; margin-bottom:
 .modRow.locked * { -webkit-user-drag: none; }
 .modRow.locked .modGrip .lucide { width: 15px; height: 15px; }
 .modRow[data-mod] { cursor: default; }
+.modRow[data-mod]:not(.locked) { touch-action: none; }
+.modRow[data-mod], .modRow[data-mod] * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none; }
 .modRow[data-mod] .modGrip { cursor: grab; }
 .modRow.dragging { opacity: .92; background: var(--surface-card); box-shadow: 0 16px 34px -14px rgba(42,36,32,.42); transform: scale(1.015); cursor: grabbing; }
 .modRow.dragging .modGrip { cursor: grabbing; }
