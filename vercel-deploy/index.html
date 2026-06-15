@@ -512,18 +512,6 @@
       // Mode labels per space (data-i). Spaces not listed = single view.
       var MODES = { '2': ['List', 'Day', 'Multiday', 'Week', 'Month', 'Year'], '3': ['Tasks', 'All', 'Detail'], '4': ['Habits', 'Detail', 'Overall', 'Gallery', 'New'], '5': ['Diary', 'Spaces'], '7': ['Boards', 'Cards', 'Dates', 'Checklists', 'Detail', 'Actions'] };
 
-      // Mobile story cards keep the screenshot, dots and a short caption together.
-      // The dots show progress through the horizontal story, not desktop gallery modes.
-      steps.forEach(function (stepEl, idx) {
-        var mdots = stepEl.querySelector('.mobileStepDots');
-        if (!mdots || mdots.children.length) return;
-        for (var m = 0; m < steps.length; m++) {
-          var dot = document.createElement('i');
-          if (m === idx) dot.className = 'on';
-          mdots.appendChild(dot);
-        }
-      });
-
       // Group images by space, then by variant index. A variant holding more
       // than one image (distinguished by data-sub) gets an inline sub-toggle
       // (e.g. Multiday switches between 2 and 3 days within a single view).
@@ -541,6 +529,111 @@
           .sort(function (a, b) { return (+a) - (+b); })
           .map(function (v) { return { v: +v, imgs: groups[s][v] }; });
       });
+
+      var MOBILE_COPY = {
+        '2': [
+          ['List', 'A quiet list when the day needs less noise.', 'See the day as a soft sequence.'],
+          ['Day — roles', 'One day, colored by the parts of your life.', 'Notice what kind of day you are actually building.'],
+          ['Day — lists', 'The same day, grouped by the lists that hold it.', 'Switch the lens without changing the plan.'],
+          ['Two days', 'A little more room when today is tied to tomorrow.', 'Keep the near future close enough to understand.'],
+          ['Three days', 'Three days side by side, without the full week.', 'Plan a small stretch instead of the whole world.'],
+          ['Week — classic', 'The full week when you need the whole room.', 'See the shape before you step into it.'],
+          ['Week — compact', 'A tighter week for quick reading.', 'Keep the overview, lose the clutter.'],
+          ['Month', 'A classic month for the larger rhythm.', 'Let the pattern appear from a little distance.'],
+          ['Year', 'The year as a calm map.', 'Zoom out when the small days need context.']
+        ],
+        '3': [
+          ['Inbox', 'A soft landing place for loose things.', 'Catch the thought before it becomes noise.'],
+          ['Today', 'Only what belongs close to today.', 'Bring the day back down to size.'],
+          ['All lists', 'Everything grouped without becoming a wall.', 'Keep many lists readable at once.'],
+          ['Task detail', 'A task can hold the extra pieces too.', 'Add the checklist, reminder, link or file where it belongs.']
+        ],
+        '4': [
+          ['Habits', 'The daily rhythm, kept gentle.', 'Track the pattern without turning it into pressure.'],
+          ['Month detail', 'One habit across the month.', 'Watch consistency appear in small marks.'],
+          ['Year detail', 'The same rhythm from far away.', 'See the season, not just the streak.'],
+          ['Overall', 'All habits in one soft overview.', 'Notice what is steady and what needs more air.'],
+          ['Gallery', 'A starting gallery for new rituals.', 'Choose a rhythm without starting from a blank page.'],
+          ['New habit', 'Goals and frequency, only if you want them.', 'Make the habit specific without making it harsh.']
+        ],
+        '5': [
+          ['Diary', 'A small place for the day itself.', 'Leave a line before the day disappears.'],
+          ['Spaces', 'Separate rooms for different kinds of writing.', 'Keep notes, ideas and reflections from piling together.']
+        ],
+        '6': [
+          ['Birthdays', 'People surface before the day rushes past.', 'Remember with enough time to care properly.']
+        ],
+        '7': [
+          ['Boards', 'All projects start as boards you can actually read.', 'Give each moving thing a quiet place to live.'],
+          ['Cards', 'A board can hold the messy middle.', 'Photos, links and fragments stay with the project.'],
+          ['Dates', 'Cards can carry real dates when they matter.', 'Let time attach to the work without swallowing it.'],
+          ['Checklists', 'Packing, steps and tiny details stay inside the card.', 'Keep the small actions close to the bigger thing.'],
+          ['Detail', 'Open a card when it needs more room.', 'Links, images and notes stay in one soft pocket.'],
+          ['Actions', 'A card can become a task when it needs doing.', 'Move from idea to next action without rewriting it.']
+        ],
+        '8': [
+          ['Pomodoro', 'Rounds, breaks and a quiet ring.', 'Focus for a small stretch, then come back gently.']
+        ]
+      };
+
+      function mobileSlideMeta(space, idx, img) {
+        var list = MOBILE_COPY[space] || [];
+        if (list[idx]) return list[idx];
+        var label = img.getAttribute('data-sublabel') || img.getAttribute('alt') || 'View ' + (idx + 1);
+        return [label, label, 'A small view of this space.'];
+      }
+
+      function buildMobileCarousels() {
+        steps.forEach(function (stepEl) {
+          var space = stepEl.getAttribute('data-i');
+          var holder = stepEl.querySelector('.stepShot');
+          if (!holder || holder.querySelector('.mobileShotTrack')) return;
+          var spaceImgs = [].slice.call(imgs).filter(function (img) { return img.getAttribute('data-shot') === space; });
+          if (!spaceImgs.length) return;
+          holder.innerHTML = '';
+          holder.classList.add('mobileShotCarousel');
+          var track = document.createElement('div');
+          track.className = 'mobileShotTrack';
+          spaceImgs.forEach(function (img, idx) {
+            var meta = mobileSlideMeta(space, idx, img);
+            var slide = document.createElement('figure');
+            slide.className = 'mobileShotSlide';
+            var frame = document.createElement('span');
+            frame.className = 'mobilePhoneFrame';
+            var clone = img.cloneNode(false);
+            clone.removeAttribute('class');
+            clone.removeAttribute('data-shot');
+            clone.removeAttribute('data-var');
+            clone.removeAttribute('data-sub');
+            clone.removeAttribute('data-sublabel');
+            frame.appendChild(clone);
+            var cap = document.createElement('figcaption');
+            cap.className = 'mobileShotMeta';
+            var dots = document.createElement('span');
+            dots.className = 'mobileStepDots';
+            for (var d = 0; d < spaceImgs.length; d++) {
+              var dot = document.createElement('i');
+              if (d === idx) dot.className = 'on';
+              dots.appendChild(dot);
+            }
+            var caption = document.createElement('span');
+            caption.className = 'mobileShotCaption';
+            caption.textContent = meta[1];
+            var sentence = document.createElement('span');
+            sentence.className = 'mobileSlideText';
+            sentence.textContent = meta[2];
+            cap.appendChild(dots);
+            cap.appendChild(caption);
+            cap.appendChild(sentence);
+            slide.appendChild(frame);
+            slide.appendChild(cap);
+            track.appendChild(slide);
+          });
+          holder.appendChild(track);
+        });
+      }
+
+      buildMobileCarousels();
 
       var curSpace = steps[0].getAttribute('data-i');
       var curVar = 0;
