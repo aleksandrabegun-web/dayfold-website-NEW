@@ -142,6 +142,11 @@
     </div>
     <div class="showWrap">
       <div class="showPhoneCol">
+        <div class="mobileShowHead" aria-live="polite">
+          <span class="mobileShowKicker" data-mobile-kicker></span>
+          <span class="mobileShowTitle" data-mobile-title></span>
+          <span class="mobileShowNum" data-mobile-num></span>
+        </div>
         <div class="showPhone" data-gallery>
           <div class="showPhoneGlow"></div>
           <img loading="lazy" decoding="async" data-shot="2" data-var="0" class="active" src="public/assets/screens/calendar-list.png" alt="Dayfold Calendar, list view">
@@ -182,6 +187,7 @@
             <span class="galSub" data-gal-sub hidden></span>
           </span>
           <span class="galDots" data-gal-dots></span>
+          <span class="galCopy" data-gal-copy></span>
         </div>
       </div>
       <div class="showSteps">
@@ -494,9 +500,22 @@
       var prevBtn = document.querySelector('[data-gal-prev]');
       var nextBtn = document.querySelector('[data-gal-next]');
       var subEl = document.querySelector('[data-gal-sub]');
+      var mobileKickerEl = document.querySelector('[data-mobile-kicker]');
+      var mobileTitleEl = document.querySelector('[data-mobile-title]');
+      var mobileNumEl = document.querySelector('[data-mobile-num]');
+      var copyEl = document.querySelector('[data-gal-copy]');
 
       // Mode labels per space (data-i). Spaces not listed = single view.
       var MODES = { '2': ['List', 'Day', 'Multiday', 'Week', 'Month', 'Year'], '3': ['Tasks', 'All', 'Detail'], '4': ['Habits', 'Detail', 'Overall', 'Gallery', 'New'], '5': ['Diary', 'Spaces'], '7': ['Boards', 'Cards', 'Dates', 'Checklists', 'Detail', 'Actions'] };
+      var MOBILE_COPY = {
+        '2': ['See time as a calm list when the day needs less noise.', 'Switch the day between roles or lists to understand its shape.', 'Keep the next few days close without opening the whole week.', 'Use the week view when you need the whole room.', 'Let the month show the larger rhythm.', 'Zoom out to see the year without losing the day.'],
+        '3': ['Catch loose tasks before they become noise.', 'Group every list without turning it into a wall.', 'Open a task when it needs a checklist, reminder, link or file.'],
+        '4': ['Keep routines visible without making them a performance.', 'Open one habit to see the month or year gently fill in.', 'Step back and see all rhythms together.', 'Choose a starting point from a soft habit gallery.', 'Set the goal and frequency only as precisely as you need.'],
+        '5': ['Leave one small line for the day.', 'Keep different kinds of writing in their own rooms.'],
+        '6': ['People surface early enough to care properly.'],
+        '7': ['Start with boards that are easy to read.', 'Let project cards hold the messy middle.', 'Attach dates when time starts to matter.', 'Keep checklists inside the card they belong to.', 'Open the card when links, images and notes need room.', 'Turn a card into a next action when it is ready.'],
+        '8': ['Focus for a small stretch, then come back gently.']
+      };
 
       // Group images by space, then by variant index. A variant holding more
       // than one image (distinguished by data-sub) gets an inline sub-toggle
@@ -547,6 +566,18 @@
 
         var stepEl = document.querySelector('.spaceStep[data-i="' + curSpace + '"]');
         var fallbackName = stepEl && stepEl.querySelector('h3') ? stepEl.querySelector('h3').textContent : '';
+        if (mobileTitleEl) mobileTitleEl.textContent = fallbackName || '';
+        if (mobileNumEl) mobileNumEl.textContent = stepEl && stepEl.querySelector('.stepNum') ? stepEl.querySelector('.stepNum').textContent.replace(' - ', '/') : '';
+        if (mobileKickerEl && stepEl) {
+          var eyebrow = stepEl.querySelector('.stepEyebrow');
+          mobileKickerEl.innerHTML = eyebrow ? eyebrow.innerHTML : '';
+          mobileKickerEl.style.setProperty('--sc', stepEl.style.getPropertyValue('--sc') || 'var(--camel-deep)');
+          mobileKickerEl.style.setProperty('--scsoft', stepEl.style.getPropertyValue('--scsoft') || 'var(--camel-soft)');
+        }
+        if (copyEl) {
+          var copyList = MOBILE_COPY[curSpace] || [];
+          copyEl.textContent = copyList[curVar] || '';
+        }
         if (nameEl) nameEl.textContent = names[curVar] || fallbackName || '';
         if (dotsEl) {
           dotsEl.innerHTML = '';
